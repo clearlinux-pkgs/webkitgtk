@@ -4,7 +4,7 @@
 #
 Name     : webkitgtk
 Version  : 2.14.0
-Release  : 1
+Release  : 2
 URL      : https://webkitgtk.org/releases/webkitgtk-2.14.0.tar.xz
 Source0  : https://webkitgtk.org/releases/webkitgtk-2.14.0.tar.xz
 Summary  : GTK+ version of the JavaScriptCore engine
@@ -107,10 +107,10 @@ pushd clr-build
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -falign-functions=32 -std=gnu++98 -fno-semantic-interposition "
+export CFLAGS="$CFLAGS -O3 -falign-functions=32 -std=gnu++98 -fno-semantic-interposition -g1"
 export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -std=gnu++98 -fno-semantic-interposition "
 export FFLAGS="$CFLAGS -O3 -falign-functions=32 -std=gnu++98 -fno-semantic-interposition "
-export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -std=gnu++98 -fno-semantic-interposition "
+export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -std=gnu++98 -fno-semantic-interposition -g1 "
 cmake .. -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_SHARED_LIBS:BOOL=ON -DLIB_INSTALL_DIR:PATH=%{_libdir} -DCMAKE_AR=/usr/bin/gcc-ar -DCMAKE_RANLIB=/usr/bin/gcc-ranlib -DPORT=GTK -DENABLE_GEOLOCATION=off -DENABLE_SPELLCHECK=off -DUSE_LIBHYPHEN=off -DUSE_LD_GOLD=off -DUSE_SYSTEM_MALLOC=on -DENABLE_MINIBROWSER=ON  -DCMAKE_BUILD_TYPE=Release
 make VERBOSE=1  %{?_smp_mflags}
 popd
