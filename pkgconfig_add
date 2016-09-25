@@ -1,0 +1,8 @@
+# This file contains additional pkgconfig build requirements that did
+# not get picked up automatically. One name per line, no whitespace.
+gtk+-3.0
+libsecret-1
+sqlite3
+gtk+-2.0
+x11
+xt

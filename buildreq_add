@@ -1,0 +1,25 @@
+# This file contains additional build requirements that did not get
+# picked up automatically. One name per line, no whitespace.
+gjs-dev
+bison
+flex
+gperf
+ruby
+freetype-dev
+gnutls-dev
+fontconfig-dev
+libjpeg-turbo-dev
+libpng-dev
+harfbuzz-dev
+icu4c-dev
+libsoup-dev
+libxslt-dev
+gstreamer-dev
+gst-plugins-base-dev
+libXcomposite-dev
+libnotify-dev
+mesa-dev
+libwebp-dev
+gobject-introspection
+gobject-introspection-dev
+libc-bin
