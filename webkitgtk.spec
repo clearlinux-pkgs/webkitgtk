@@ -6,7 +6,7 @@
 #
 Name     : webkitgtk
 Version  : 2.14.5
-Release  : 2
+Release  : 3
 URL      : https://webkitgtk.org/releases/webkitgtk-2.14.5.tar.xz
 Source0  : https://webkitgtk.org/releases/webkitgtk-2.14.5.tar.xz
 Source99 : https://webkitgtk.org/releases/webkitgtk-2.14.5.tar.xz.asc
