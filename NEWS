@@ -1,4 +1,39 @@
 ==================
+WebKitGTK+  2.16.4
+==================
+
+  - Fix web process deadlock when seeking youtube videos.
+  - Fix blob downloads.
+  - Improve theme rendering performance when using GTK+ >= 3.20.
+  - Fix positioning of popup menus in Wayland.
+  - Fix several crashes and rendering issues.
+  - Security fixes: CVE-2017-2538.
+
+==================
+WebKitGTK+  2.16.3
+==================
+
+  - Fix URL shown in the title of beforeunload dialogs.
+  - Focus first input field of HTTP authentication dialog.
+  - Fix rendering glitches in HiDPI in long GitHub Gist pages when focusing the comments textarea.
+  - Remove Firefox user agent quirk for Google domains.
+  - Remove LATEST_RECORD_VERSION from GnuTLS priority string.
+  - Fix several crashes and rendering issues.
+  - Security fixes: CVE-2017-2496, CVE-2017-2539, CVE-2017-2510.
+
+==================
+WebKitGTK+  2.16.2
+==================
+
+  - Update user agent quirks to make Youtube and new Google login page work.
+  - Fix rendering of animated PNGs.
+  - Fix playing of some live streams.
+  - Update several web inspector icons.
+  - Fix the build with NPAPI plugins enabled but X11 disabled.
+  - Fix the build with OpenGL disabled.
+  - Fix several crashes and rendering issues.
+
+==================
 WebKitGTK+  2.16.1
 ==================
 
