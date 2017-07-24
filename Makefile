@@ -1,5 +1,5 @@
 PKG_NAME := webkitgtk
-URL := https://webkitgtk.org/releases/webkitgtk-2.16.5.tar.xz
+URL := https://webkitgtk.org/releases/webkitgtk-2.16.6.tar.xz
 
 
 include ../common/Makefile.common

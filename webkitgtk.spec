@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xF3D322D0EC4582C3 (cgarcia@igalia.com)
 #
 Name     : webkitgtk
-Version  : 2.16.5
-Release  : 11
-URL      : https://webkitgtk.org/releases/webkitgtk-2.16.5.tar.xz
-Source0  : https://webkitgtk.org/releases/webkitgtk-2.16.5.tar.xz
-Source99 : https://webkitgtk.org/releases/webkitgtk-2.16.5.tar.xz.asc
+Version  : 2.16.6
+Release  : 12
+URL      : https://webkitgtk.org/releases/webkitgtk-2.16.6.tar.xz
+Source0  : https://webkitgtk.org/releases/webkitgtk-2.16.6.tar.xz
+Source99 : https://webkitgtk.org/releases/webkitgtk-2.16.6.tar.xz.asc
 Summary  : GTK+ version of the JavaScriptCore engine
 Group    : Development/Tools
 License  : Apache-2.0 BSD-2-Clause BSD-3-Clause CC-BY-SA-3.0 ICU LGPL-2.0 LGPL-2.1 MIT
@@ -102,14 +102,14 @@ locales components for the webkitgtk package.
 
 
 %prep
-%setup -q -n webkitgtk-2.16.5
+%setup -q -n webkitgtk-2.16.6
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1498612862
+export SOURCE_DATE_EPOCH=1500932170
 unset LD_AS_NEEDED
 mkdir clr-build
 pushd clr-build
@@ -122,7 +122,7 @@ make VERBOSE=1  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1498612862
+export SOURCE_DATE_EPOCH=1500932170
 rm -rf %{buildroot}
 pushd clr-build
 %make_install
@@ -346,9 +346,9 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libjavascriptcoregtk-4.0.so.18
-/usr/lib64/libjavascriptcoregtk-4.0.so.18.5.12
+/usr/lib64/libjavascriptcoregtk-4.0.so.18.5.13
 /usr/lib64/libwebkit2gtk-4.0.so.37
-/usr/lib64/libwebkit2gtk-4.0.so.37.19.8
+/usr/lib64/libwebkit2gtk-4.0.so.37.19.9
 /usr/lib64/webkit2gtk-4.0/injected-bundle/libwebkit2gtkinjectedbundle.so
 
 %files locales -f WebKit2GTK-4.0.lang
