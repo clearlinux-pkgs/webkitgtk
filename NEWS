@@ -1,116 +1,134 @@
 ==================
-WebKitGTK+  2.16.6
+WebKitGTK+  2.18.0
 ==================
 
-  - Fix rendering of spin buttons with GTK+ >= 3.20 when the entry width is too short.
-  - Fix the build when Wayland target is enabled and X11 disabled.
+What's new in WebKitGTK+ 2.18.0?
+
+  - Fix the API documentation generation.
+  - Fix the build in ARM with NEON.
+  - Fix the build for Clang with libc++.
+
+==================
+WebKitGTK+ 2.17.92
+==================
+
+What's new in WebKitGTK+ 2.17.92?
+
+  - Improve CPU usage when rendering under Wayland in accelerated compositing mode.
+  - Improve the memory consumption of the UI process under Wayland.
+  - Fix rendering issues in some web sites with accelerated compositing enabled.
+  - Fix a web process crash when closing the WebView.
+  - Initialize libgcrypt in the network process too.
+  - Show controls if a video element isn't allowed to play inline.
+  - Add support for cookies and screenshots commands in WebDriver.
   - Fix several crashes and rendering issues.
-  - Security fixes: CVE-2017-7039, CVE-2017-7018, CVE-2017-7030, CVE-2017-7037, CVE-2017-7034,
-    CVE-2017-7055, CVE-2017-7056, CVE-2017-7064, CVE-2017-7061, CVE-2017-7048, CVE-2017-7046.
+  - Translation updates: Brazilian Portuguese, Polish.
 
 ==================
-WebKitGTK+  2.16.5
+WebKitGTK+ 2.17.91
 ==================
 
-  - Fix a web process crash when page finishes loading in several web sites.
-  - Fix the menu of select elements not showing in some cases under Wayland.
+What's new in WebKitGTK+ 2.17.91?
+
+  - Fix proxy HTTP authentication for HTTPS requests.
+  - Stop kinetic scrolling when a zero movement is reached.
+  - Fix UI process crash when selecting text.
+  - Fix UI process crash when loading a favicon.
+  - Properly handle WebDriver click command on option elements.
+  - Fix web process crash when resizing the window with accelerated compositing enabled.
+  - Fix crashes in 32 bit systems due to incorrect use of GVariant.
+  - Fix several crashes and rendering issues.
 
 ==================
-WebKitGTK+  2.16.4
+WebKitGTK+ 2.17.90
 ==================
 
-  - Fix web process deadlock when seeking youtube videos.
-  - Fix blob downloads.
+What's new in WebKitGTK+ 2.17.90?
+
+  - WebCrypto API support is now enabled by default.
+  - Add API to provide browser information required by automation.
+  - Fix the expiration date of manually added cookies.
+  - Add support for alerts in WebDriver.
+  - WebKitDatabaseProcess binary has been renamed to WebKitStorageProcess.
+  - Fix several crashes and rendering issues.
+
+=================
+WebKitGTK+ 2.17.5
+=================
+
+What's new in WebKitGTK+ 2.17.5?
+
+  - Add initial implementation of WebDriver.
+  - Enable GStreamerGL by default when building with GStreamer >= 1.10.
+  - Fix position of context menu in Wayland.
+  - Properly close cookies database at network process exit.
+  - Fix several crashes and rendering issues.
+  - Translation updates: Ukrainian.
+
+=================
+WebKitGTK+ 2.17.4
+=================
+
+What's new in WebKitGTK+ 2.17.4?
+
+  - Add API to allow overriding popup menus.
+  - Add kinetic scrolling support.
   - Improve theme rendering performance when using GTK+ >= 3.20.
-  - Fix positioning of popup menus in Wayland.
+  - Improve error message when webkit_web_view_run_javascript() fails due to a JavaScript exception.
+  - Fix artifacts when rendering large images.
+  - Fix blob downloads.
+  - Fix web process deadlock when seeking youtube videos.
+  - Fix alpha premultiplying when using cairo to draw the video frames.
+  - Fix web process deadlock when closing the remote inspector frontend.
+  - Update several web inspector icons.
   - Fix several crashes and rendering issues.
-  - Security fixes: CVE-2017-2538.
+  - Translation updates: Spanish.
 
-==================
-WebKitGTK+  2.16.3
-==================
+=================
+WebKitGTK+ 2.17.3
+=================
 
-  - Fix URL shown in the title of beforeunload dialogs.
-  - Focus first input field of HTTP authentication dialog.
+What's new in WebKitGTK+ 2.17.3?
+
+  - Add new API to create a WebKitContextMenuItem from a GAction.
+  - Fix graphics repaint hungs in accelerated compositing mode after a resize.
   - Fix rendering glitches in HiDPI in long GitHub Gist pages when focusing the comments textarea.
   - Remove Firefox user agent quirk for Google domains.
   - Remove LATEST_RECORD_VERSION from GnuTLS priority string.
+  - Improve colors of inspector SVG icons.
   - Fix several crashes and rendering issues.
-  - Security fixes: CVE-2017-2496, CVE-2017-2539, CVE-2017-2510.
+  - Translation updates: French.
 
-==================
-WebKitGTK+  2.16.2
-==================
+=================
+WebKitGTK+ 2.17.2
+=================
+
+What's new in WebKitGTK+ 2.17.2?
 
   - Update user agent quirks to make Youtube and new Google login page work.
-  - Fix rendering of animated PNGs.
-  - Fix playing of some live streams.
+  - Fix URL shown in the title of beforeunload dialogs.
+  - Focus first input field of HTTP authentication dialog.
+  - Fix rendering of PNG images when decoded in more than one chunk.
   - Update several web inspector icons.
-  - Fix the build with NPAPI plugins enabled but X11 disabled.
   - Fix the build with OpenGL disabled.
   - Fix several crashes and rendering issues.
 
-==================
-WebKitGTK+  2.16.1
-==================
+=================
+WebKitGTK+ 2.17.1
+=================
 
-  - Fix no-third-party cookies policy in case of redirections.
-  - Keep URL fragments after server redirections.
-  - Honor GTK+ font settings.
-  - Ensure depth and stencil renderbuffers are created on GLESv2.
-  - Prevent new navigations from onbeforeunload handler and document unload.
-  - Disallow beforeunload alerts from web pages users have never interacted with.
-  - Fix several crashes and rendering issues.
+What's new in WebKitGTK+ 2.17.1?
 
-==================
-WebKitGTK+  2.16.0
-==================
-
-  - Add missing types to WebKitAutocleanups.
-  - Translation updates: Swedish, Ukrainian.
-
-==================
-WebKitGTK+ 2.15.92
-==================
-
-  - Show the context menu when triggered by the keyboard.
-  - Fix web process deadlocks when destroying the media player.
-  - Fix web process crashes when loading animated GIFs.
-  - Fix several crashes and rendering issues.
-  - Translation updates: Polish.
-
-==================
-WebKitGTK+ 2.15.91
-==================
-
-What's new in WebKitGTK+ 2.15.91?
-
-  - Fix rendering artifacts when resizing the window in accelerated compositing mode.
-  - Remove flickering when leaving accelerated compositing mode.
-  - Fix a web process crash when loading duck duck go.
-  - Properly handle copy drag and drop operations.
-  - Fix a hang when sending an IPC messages fails because socket read buffers are full.
-  - Ensure we never try to load GTK2 plugins in Wayland.
-  - Fix several crashes and rendering issues.
-
-==================
-WebKitGTK+ 2.15.90
-==================
-
-What's new in WebKitGTK+ 2.15.90?
-
-  - Add an API to add a custom tab into the print dialog.
-  - Update cookie manager API to properly work with ephemeral sessions.
-  - Fix rendering issues in long documents with transparent background.
-  - Handle extended colors in cairo and texture mapper backends.
-  - Release unused UpdateAtlas and reduce the tile coverage on memory pressure.
-  - The media backend now stores preloaded media in /var/tmp instead of user cache dir.
-  - Fix a deadlock when the media player is destroyed.
-  - Fast replay on video hide/unhide on platforms with limited video buffer pools.
-  - Fix network process crashes when loading custom URI schemes.
-  - Fix video rendering when switching to accelerated compositing mode.
-  - Fix several crashes and rendering issues.
-  - Translation updates: Brazilian Portuguese.
+  - Switch to use new remote inspector infraestructure instead of legacy Web Sockets based one.
+  - Add API to enable and handle Web Automation.
+  - Load large images asynchronously off the main theead.
+  - Use GtkFileChooserNative for open/save dialogs when available.
+  - Make file chooser run as modal by default if possible.
+  - Fix position of dropdown menus in Wayland.
+  - Keep URI fragments after a server redirection.
+  - Implement support for aria-haspopup and aria-autocomplete.
+  - Implement aria-value support for focusable separators.
+  - Fix playing of some live streams.
 
 =================
 WebKitGTK+ 2.15.4
