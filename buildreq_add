@@ -25,3 +25,5 @@ gobject-introspection-dev
 libc-bin
 libgcrypt-dev
 libgpg-error-dev
+python3-dev
+python-dev
