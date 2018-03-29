@@ -6,3 +6,4 @@ sqlite3
 gtk+-2.0
 x11
 xt
+libwoff2dec

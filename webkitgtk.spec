@@ -5,14 +5,14 @@
 # Source0 file verified with key 0xF3D322D0EC4582C3 (cgarcia@igalia.com)
 #
 Name     : webkitgtk
-Version  : 2.18.6
-Release  : 23
-URL      : https://webkitgtk.org/releases/webkitgtk-2.18.6.tar.xz
-Source0  : https://webkitgtk.org/releases/webkitgtk-2.18.6.tar.xz
-Source99 : https://webkitgtk.org/releases/webkitgtk-2.18.6.tar.xz.asc
+Version  : 2.20.0
+Release  : 24
+URL      : https://webkitgtk.org/releases/webkitgtk-2.20.0.tar.xz
+Source0  : https://webkitgtk.org/releases/webkitgtk-2.20.0.tar.xz
+Source99 : https://webkitgtk.org/releases/webkitgtk-2.20.0.tar.xz.asc
 Summary  : GTK+ version of the JavaScriptCore engine
 Group    : Development/Tools
-License  : Apache-2.0 BSD-2-Clause BSD-3-Clause CC-BY-SA-3.0 ICU LGPL-2.0 LGPL-2.1 MIT
+License  : BSD-2-Clause BSD-3-Clause ICU LGPL-2.0 LGPL-2.1 MIT
 Requires: webkitgtk-bin
 Requires: webkitgtk-data
 Requires: webkitgtk-lib
@@ -45,12 +45,14 @@ BuildRequires : mesa-dev
 BuildRequires : pkgconfig(gtk+-2.0)
 BuildRequires : pkgconfig(gtk+-3.0)
 BuildRequires : pkgconfig(libsecret-1)
+BuildRequires : pkgconfig(libwoff2dec)
 BuildRequires : pkgconfig(sqlite3)
 BuildRequires : pkgconfig(x11)
 BuildRequires : pkgconfig(xt)
 BuildRequires : python-dev
 BuildRequires : python3-dev
 BuildRequires : ruby
+Patch1: utf.patch
 
 %description
 Google C++ Testing Framework
@@ -104,14 +106,15 @@ locales components for the webkitgtk package.
 
 
 %prep
-%setup -q -n webkitgtk-2.18.6
+%setup -q -n webkitgtk-2.20.0
+%patch1 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1516833316
+export SOURCE_DATE_EPOCH=1522336443
 unset LD_AS_NEEDED
 mkdir clr-build
 pushd clr-build
@@ -119,12 +122,12 @@ export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-in
 export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export FFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math -std=gnu++98"
-cmake .. -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_SHARED_LIBS:BOOL=ON -DLIB_INSTALL_DIR:PATH=/usr/lib64 -DCMAKE_AR=/usr/bin/gcc-ar -DLIB_SUFFIX=64 -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_RANLIB=/usr/bin/gcc-ranlib -DPORT=GTK -DENABLE_GEOLOCATION=off -DENABLE_SPELLCHECK=off -DUSE_LIBHYPHEN=off -DUSE_LD_GOLD=off -DUSE_SYSTEM_MALLOC=on -DENABLE_MINIBROWSER=ON  -DCMAKE_BUILD_TYPE=Release -DUSE_GSTREAMER_GL=OFF
-make VERBOSE=1  %{?_smp_mflags}
+cmake .. -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_SHARED_LIBS:BOOL=ON -DLIB_INSTALL_DIR:PATH=/usr/lib64 -DCMAKE_AR=/usr/bin/gcc-ar -DLIB_SUFFIX=64 -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_RANLIB=/usr/bin/gcc-ranlib -DPORT=GTK -DENABLE_GEOLOCATION=off -DENABLE_SPELLCHECK=off -DUSE_LIBHYPHEN=off -DUSE_LD_GOLD=off -DUSE_SYSTEM_MALLOC=on -DENABLE_MINIBROWSER=ON  -DCMAKE_BUILD_TYPE=Release -DUSE_GSTREAMER_GL=OFF -DPYTHON=/usr/bin/python2
+make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1516833316
+export SOURCE_DATE_EPOCH=1522336443
 rm -rf %{buildroot}
 pushd clr-build
 %make_install
@@ -224,6 +227,7 @@ popd
 /usr/include/webkitgtk-4.0/webkit2/WebKitWebHitTestResult.h
 /usr/include/webkitgtk-4.0/webkit2/WebKitWebInspector.h
 /usr/include/webkitgtk-4.0/webkit2/WebKitWebPage.h
+/usr/include/webkitgtk-4.0/webkit2/WebKitWebProcessEnumTypes.h
 /usr/include/webkitgtk-4.0/webkit2/WebKitWebResource.h
 /usr/include/webkitgtk-4.0/webkit2/WebKitWebView.h
 /usr/include/webkitgtk-4.0/webkit2/WebKitWebViewBase.h
@@ -355,9 +359,9 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libjavascriptcoregtk-4.0.so.18
-/usr/lib64/libjavascriptcoregtk-4.0.so.18.6.15
+/usr/lib64/libjavascriptcoregtk-4.0.so.18.7.8
 /usr/lib64/libwebkit2gtk-4.0.so.37
-/usr/lib64/libwebkit2gtk-4.0.so.37.24.9
+/usr/lib64/libwebkit2gtk-4.0.so.37.28.0
 /usr/lib64/webkit2gtk-4.0/injected-bundle/libwebkit2gtkinjectedbundle.so
 
 %files locales -f WebKit2GTK-4.0.lang

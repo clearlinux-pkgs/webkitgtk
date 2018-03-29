@@ -1,0 +1,10 @@
+--- webkitgtk-2.20.0/Source/JavaScriptCore/Scripts/cssmin.py~	2018-02-19 07:45:14.000000000 +0000
++++ webkitgtk-2.20.0/Source/JavaScriptCore/Scripts/cssmin.py	2018-03-29 13:37:52.127016439 +0000
+@@ -46,4 +46,7 @@
+     if sys.version_info[0] == 3 and sys.stdin.encoding != 'UTF-8':
+         import io
+         sys.stdin = io.TextIOWrapper(sys.stdin.buffer, encoding='UTF-8')
++    if sys.version_info[0] == 3 and sys.stdout.encoding != 'UTF-8':
++        import io
++        sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='UTF-8')
+     sys.stdout.write(cssminify(sys.stdin.read()))
