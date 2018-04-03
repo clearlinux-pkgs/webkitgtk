@@ -6,7 +6,7 @@
 #
 Name     : webkitgtk
 Version  : 2.20.0
-Release  : 24
+Release  : 25
 URL      : https://webkitgtk.org/releases/webkitgtk-2.20.0.tar.xz
 Source0  : https://webkitgtk.org/releases/webkitgtk-2.20.0.tar.xz
 Source99 : https://webkitgtk.org/releases/webkitgtk-2.20.0.tar.xz.asc
@@ -114,7 +114,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1522336443
+export SOURCE_DATE_EPOCH=1522782071
 unset LD_AS_NEEDED
 mkdir clr-build
 pushd clr-build
@@ -127,7 +127,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1522336443
+export SOURCE_DATE_EPOCH=1522782071
 rm -rf %{buildroot}
 pushd clr-build
 %make_install
