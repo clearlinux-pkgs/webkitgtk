@@ -13,6 +13,7 @@ libcairo.so.2
 libdl.so.2
 libfontconfig.so.1
 libfreetype.so.6
+libfribidi.so.0
 libgcc_s.so.1
 libgcrypt.so.20
 libgdk-3.so.0
