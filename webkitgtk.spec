@@ -49,7 +49,7 @@ BuildRequires : pkgconfig(libwoff2dec)
 BuildRequires : pkgconfig(sqlite3)
 BuildRequires : pkgconfig(x11)
 BuildRequires : pkgconfig(xt)
-BuildRequires : python-dev
+
 BuildRequires : python3-dev
 BuildRequires : ruby
 Patch1: utf.patch
