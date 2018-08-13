@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xF3D322D0EC4582C3 (cgarcia@igalia.com)
 #
 Name     : webkitgtk
-Version  : 2.20.4
-Release  : 32
-URL      : https://webkitgtk.org/releases/webkitgtk-2.20.4.tar.xz
-Source0  : https://webkitgtk.org/releases/webkitgtk-2.20.4.tar.xz
-Source99 : https://webkitgtk.org/releases/webkitgtk-2.20.4.tar.xz.asc
+Version  : 2.20.5
+Release  : 33
+URL      : https://webkitgtk.org/releases/webkitgtk-2.20.5.tar.xz
+Source0  : https://webkitgtk.org/releases/webkitgtk-2.20.5.tar.xz
+Source99 : https://webkitgtk.org/releases/webkitgtk-2.20.5.tar.xz.asc
 Summary  : GTK+ version of the JavaScriptCore engine
 Group    : Development/Tools
 License  : BSD-2-Clause BSD-3-Clause ICU LGPL-2.0 LGPL-2.1 MIT
@@ -156,7 +156,7 @@ locales components for the webkitgtk package.
 
 
 %prep
-%setup -q -n webkitgtk-2.20.4
+%setup -q -n webkitgtk-2.20.5
 %patch1 -p1
 
 %build
@@ -164,7 +164,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1533564993
+export SOURCE_DATE_EPOCH=1534168946
 unset LD_AS_NEEDED
 mkdir clr-build
 pushd clr-build
@@ -177,7 +177,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1533564993
+export SOURCE_DATE_EPOCH=1534168946
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/doc/webkitgtk
 cp Source/JavaScriptCore/COPYING.LIB %{buildroot}/usr/share/doc/webkitgtk/Source_JavaScriptCore_COPYING.LIB
@@ -429,9 +429,9 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libjavascriptcoregtk-4.0.so.18
-/usr/lib64/libjavascriptcoregtk-4.0.so.18.7.12
+/usr/lib64/libjavascriptcoregtk-4.0.so.18.7.13
 /usr/lib64/libwebkit2gtk-4.0.so.37
-/usr/lib64/libwebkit2gtk-4.0.so.37.28.4
+/usr/lib64/libwebkit2gtk-4.0.so.37.28.5
 /usr/lib64/webkit2gtk-4.0/injected-bundle/libwebkit2gtkinjectedbundle.so
 
 %files license
