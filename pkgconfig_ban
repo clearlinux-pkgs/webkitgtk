@@ -7,3 +7,4 @@ DEBUG util.py:399:  No matching package to install: 'pkgconfig(
 gtk+-quartz-3.0
 wpe-0.1
 wpebackend-fdo-0.1
+wpe-0.2
