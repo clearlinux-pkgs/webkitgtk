@@ -6,7 +6,7 @@
 #
 Name     : webkitgtk
 Version  : 2.22.0
-Release  : 35
+Release  : 36
 URL      : https://webkitgtk.org/releases/webkitgtk-2.22.0.tar.xz
 Source0  : https://webkitgtk.org/releases/webkitgtk-2.22.0.tar.xz
 Source99 : https://webkitgtk.org/releases/webkitgtk-2.22.0.tar.xz.asc
