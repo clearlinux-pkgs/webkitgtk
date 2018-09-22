@@ -1,3 +1,29 @@
+=================
+WebKitGTK+ 2.22.2
+=================
+
+What's new in WebKitGTK+ 2.22.2?
+
+  - Several fixes for video playback with media source extensions (MSE).
+    This allows using WebM support for YouTube, which no longer works through
+    regular video source. Note that MSE is still disabled by default and
+    webkit_settings_set_enable_mediasource() has to be used to enable the
+    feature.
+  - Fix the build when only Wayland support is enabled and X11 headers are
+    not available.
+
+=================
+WebKitGTK+ 2.22.1
+=================
+
+What's new in WebKitGTK+ 2.22.1?
+
+  - Fix printing in landscape.
+  - Fix the build in several platforms: s390x, ppc64le, armv7hl.
+  - Fix the build with a11y disabled.
+  - Fix the build with video disabled.
+  - Fix several crashes and rendering issues.
+
 ==================
 WebKitGTK+ 2.22.0
 ==================
