@@ -5,19 +5,20 @@
 # Source0 file verified with key 0x91C559DBE4C9123B (aperez@igalia.com)
 #
 Name     : webkitgtk
-Version  : 2.22.2
-Release  : 38
-URL      : https://webkitgtk.org/releases/webkitgtk-2.22.2.tar.xz
-Source0  : https://webkitgtk.org/releases/webkitgtk-2.22.2.tar.xz
-Source99 : https://webkitgtk.org/releases/webkitgtk-2.22.2.tar.xz.asc
+Version  : 2.22.3
+Release  : 39
+URL      : https://webkitgtk.org/releases/webkitgtk-2.22.3.tar.xz
+Source0  : https://webkitgtk.org/releases/webkitgtk-2.22.3.tar.xz
+Source99 : https://webkitgtk.org/releases/webkitgtk-2.22.3.tar.xz.asc
 Summary  : Web content engine for GTK+
 Group    : Development/Tools
 License  : BSD-2-Clause BSD-3-Clause ICU LGPL-2.0 LGPL-2.1 MIT
-Requires: webkitgtk-bin
-Requires: webkitgtk-data
-Requires: webkitgtk-lib
-Requires: webkitgtk-license
-Requires: webkitgtk-locales
+Requires: webkitgtk-bin = %{version}-%{release}
+Requires: webkitgtk-data = %{version}-%{release}
+Requires: webkitgtk-lib = %{version}-%{release}
+Requires: webkitgtk-libexec = %{version}-%{release}
+Requires: webkitgtk-license = %{version}-%{release}
+Requires: webkitgtk-locales = %{version}-%{release}
 BuildRequires : bison
 BuildRequires : buildreq-cmake
 BuildRequires : cmake
@@ -100,13 +101,17 @@ BuildRequires : zlib-dev
 Patch1: utf.patch
 
 %description
-The headers in this directory are for compiling on Mac OS X 10.4 and newer.
-The Mac OS X 10.4 and subsequent releases include the ICU binary, but not ICU headers.
+This module is a simple module that parses the proposed MIME spec listed
+at http://freedesktop.org/.  It is currently targeted at version 0.12.
+There are no formal releases planned for this module, and it is not
+intended to be installed at this time.  Rather, it is meant to be used
+by other libraries or applications to add support for the MIME system.
 
 %package bin
 Summary: bin components for the webkitgtk package.
 Group: Binaries
 Requires: webkitgtk-data = %{version}-%{release}
+Requires: webkitgtk-libexec = %{version}-%{release}
 Requires: webkitgtk-license = %{version}-%{release}
 
 %description bin
@@ -137,10 +142,20 @@ dev components for the webkitgtk package.
 Summary: lib components for the webkitgtk package.
 Group: Libraries
 Requires: webkitgtk-data = %{version}-%{release}
+Requires: webkitgtk-libexec = %{version}-%{release}
 Requires: webkitgtk-license = %{version}-%{release}
 
 %description lib
 lib components for the webkitgtk package.
+
+
+%package libexec
+Summary: libexec components for the webkitgtk package.
+Group: Default
+Requires: webkitgtk-license = %{version}-%{release}
+
+%description libexec
+libexec components for the webkitgtk package.
 
 
 %package license
@@ -160,7 +175,7 @@ locales components for the webkitgtk package.
 
 
 %prep
-%setup -q -n webkitgtk-2.22.2
+%setup -q -n webkitgtk-2.22.3
 %patch1 -p1
 
 %build
@@ -168,7 +183,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1537579642
+export SOURCE_DATE_EPOCH=1540823018
 unset LD_AS_NEEDED
 mkdir -p clr-build
 pushd clr-build
@@ -177,32 +192,32 @@ export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-i
 export FFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math -std=gnu++98"
 %cmake .. -DPORT=GTK -DENABLE_GEOLOCATION=off -DENABLE_SPELLCHECK=off -DUSE_LIBHYPHEN=off -DUSE_LD_GOLD=off -DUSE_SYSTEM_MALLOC=on -DENABLE_MINIBROWSER=ON  -DCMAKE_BUILD_TYPE=Release -DUSE_GSTREAMER_GL=OFF -DPYTHON=/usr/bin/python2
-make  %{?_smp_mflags}
+make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1537579642
+export SOURCE_DATE_EPOCH=1540823018
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/webkitgtk
-cp Source/JavaScriptCore/COPYING.LIB %{buildroot}/usr/share/doc/webkitgtk/Source_JavaScriptCore_COPYING.LIB
-cp Source/JavaScriptCore/icu/LICENSE %{buildroot}/usr/share/doc/webkitgtk/Source_JavaScriptCore_icu_LICENSE
-cp Source/ThirdParty/ANGLE/LICENSE %{buildroot}/usr/share/doc/webkitgtk/Source_ThirdParty_ANGLE_LICENSE
-cp Source/ThirdParty/ANGLE/src/common/third_party/smhasher/LICENSE %{buildroot}/usr/share/doc/webkitgtk/Source_ThirdParty_ANGLE_src_common_third_party_smhasher_LICENSE
-cp Source/ThirdParty/ANGLE/src/tests/third_party/rapidjson/LICENSE %{buildroot}/usr/share/doc/webkitgtk/Source_ThirdParty_ANGLE_src_tests_third_party_rapidjson_LICENSE
-cp Source/ThirdParty/ANGLE/src/third_party/compiler/LICENSE %{buildroot}/usr/share/doc/webkitgtk/Source_ThirdParty_ANGLE_src_third_party_compiler_LICENSE
-cp Source/ThirdParty/ANGLE/src/third_party/libXNVCtrl/LICENSE %{buildroot}/usr/share/doc/webkitgtk/Source_ThirdParty_ANGLE_src_third_party_libXNVCtrl_LICENSE
-cp Source/ThirdParty/gtest/COPYING %{buildroot}/usr/share/doc/webkitgtk/Source_ThirdParty_gtest_COPYING
-cp Source/WTF/icu/LICENSE %{buildroot}/usr/share/doc/webkitgtk/Source_WTF_icu_LICENSE
-cp Source/WTF/wtf/dtoa/COPYING %{buildroot}/usr/share/doc/webkitgtk/Source_WTF_wtf_dtoa_COPYING
-cp Source/WTF/wtf/dtoa/LICENSE %{buildroot}/usr/share/doc/webkitgtk/Source_WTF_wtf_dtoa_LICENSE
-cp Source/WebCore/LICENSE-APPLE %{buildroot}/usr/share/doc/webkitgtk/Source_WebCore_LICENSE-APPLE
-cp Source/WebCore/LICENSE-LGPL-2 %{buildroot}/usr/share/doc/webkitgtk/Source_WebCore_LICENSE-LGPL-2
-cp Source/WebCore/LICENSE-LGPL-2.1 %{buildroot}/usr/share/doc/webkitgtk/Source_WebCore_LICENSE-LGPL-2.1
-cp Source/WebCore/icu/LICENSE %{buildroot}/usr/share/doc/webkitgtk/Source_WebCore_icu_LICENSE
-cp Source/WebInspectorUI/UserInterface/External/CodeMirror/LICENSE %{buildroot}/usr/share/doc/webkitgtk/Source_WebInspectorUI_UserInterface_External_CodeMirror_LICENSE
-cp Source/WebInspectorUI/UserInterface/External/ESLint/LICENSE %{buildroot}/usr/share/doc/webkitgtk/Source_WebInspectorUI_UserInterface_External_ESLint_LICENSE
-cp Source/WebInspectorUI/UserInterface/External/Esprima/LICENSE %{buildroot}/usr/share/doc/webkitgtk/Source_WebInspectorUI_UserInterface_External_Esprima_LICENSE
-cp Source/WebInspectorUI/UserInterface/External/three.js/LICENSE %{buildroot}/usr/share/doc/webkitgtk/Source_WebInspectorUI_UserInterface_External_three.js_LICENSE
+mkdir -p %{buildroot}/usr/share/package-licenses/webkitgtk
+cp Source/JavaScriptCore/COPYING.LIB %{buildroot}/usr/share/package-licenses/webkitgtk/Source_JavaScriptCore_COPYING.LIB
+cp Source/JavaScriptCore/icu/LICENSE %{buildroot}/usr/share/package-licenses/webkitgtk/Source_JavaScriptCore_icu_LICENSE
+cp Source/ThirdParty/ANGLE/LICENSE %{buildroot}/usr/share/package-licenses/webkitgtk/Source_ThirdParty_ANGLE_LICENSE
+cp Source/ThirdParty/ANGLE/src/common/third_party/smhasher/LICENSE %{buildroot}/usr/share/package-licenses/webkitgtk/Source_ThirdParty_ANGLE_src_common_third_party_smhasher_LICENSE
+cp Source/ThirdParty/ANGLE/src/tests/third_party/rapidjson/LICENSE %{buildroot}/usr/share/package-licenses/webkitgtk/Source_ThirdParty_ANGLE_src_tests_third_party_rapidjson_LICENSE
+cp Source/ThirdParty/ANGLE/src/third_party/compiler/LICENSE %{buildroot}/usr/share/package-licenses/webkitgtk/Source_ThirdParty_ANGLE_src_third_party_compiler_LICENSE
+cp Source/ThirdParty/ANGLE/src/third_party/libXNVCtrl/LICENSE %{buildroot}/usr/share/package-licenses/webkitgtk/Source_ThirdParty_ANGLE_src_third_party_libXNVCtrl_LICENSE
+cp Source/ThirdParty/gtest/COPYING %{buildroot}/usr/share/package-licenses/webkitgtk/Source_ThirdParty_gtest_COPYING
+cp Source/WTF/icu/LICENSE %{buildroot}/usr/share/package-licenses/webkitgtk/Source_WTF_icu_LICENSE
+cp Source/WTF/wtf/dtoa/COPYING %{buildroot}/usr/share/package-licenses/webkitgtk/Source_WTF_wtf_dtoa_COPYING
+cp Source/WTF/wtf/dtoa/LICENSE %{buildroot}/usr/share/package-licenses/webkitgtk/Source_WTF_wtf_dtoa_LICENSE
+cp Source/WebCore/LICENSE-APPLE %{buildroot}/usr/share/package-licenses/webkitgtk/Source_WebCore_LICENSE-APPLE
+cp Source/WebCore/LICENSE-LGPL-2 %{buildroot}/usr/share/package-licenses/webkitgtk/Source_WebCore_LICENSE-LGPL-2
+cp Source/WebCore/LICENSE-LGPL-2.1 %{buildroot}/usr/share/package-licenses/webkitgtk/Source_WebCore_LICENSE-LGPL-2.1
+cp Source/WebCore/icu/LICENSE %{buildroot}/usr/share/package-licenses/webkitgtk/Source_WebCore_icu_LICENSE
+cp Source/WebInspectorUI/UserInterface/External/CodeMirror/LICENSE %{buildroot}/usr/share/package-licenses/webkitgtk/Source_WebInspectorUI_UserInterface_External_CodeMirror_LICENSE
+cp Source/WebInspectorUI/UserInterface/External/ESLint/LICENSE %{buildroot}/usr/share/package-licenses/webkitgtk/Source_WebInspectorUI_UserInterface_External_ESLint_LICENSE
+cp Source/WebInspectorUI/UserInterface/External/Esprima/LICENSE %{buildroot}/usr/share/package-licenses/webkitgtk/Source_WebInspectorUI_UserInterface_External_Esprima_LICENSE
+cp Source/WebInspectorUI/UserInterface/External/three.js/LICENSE %{buildroot}/usr/share/package-licenses/webkitgtk/Source_WebInspectorUI_UserInterface_External_three.js_LICENSE
 pushd clr-build
 %make_install
 popd
@@ -214,13 +229,6 @@ popd
 %files bin
 %defattr(-,root,root,-)
 /usr/bin/WebKitWebDriver
-/usr/libexec/webkit2gtk-4.0/MiniBrowser
-/usr/libexec/webkit2gtk-4.0/WebKitNetworkProcess
-/usr/libexec/webkit2gtk-4.0/WebKitPluginProcess
-/usr/libexec/webkit2gtk-4.0/WebKitPluginProcess2
-/usr/libexec/webkit2gtk-4.0/WebKitStorageProcess
-/usr/libexec/webkit2gtk-4.0/WebKitWebProcess
-/usr/libexec/webkit2gtk-4.0/jsc
 
 %files data
 %defattr(-,root,root,-)
@@ -443,32 +451,42 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libjavascriptcoregtk-4.0.so.18
-/usr/lib64/libjavascriptcoregtk-4.0.so.18.11.3
+/usr/lib64/libjavascriptcoregtk-4.0.so.18.11.4
 /usr/lib64/libwebkit2gtk-4.0.so.37
-/usr/lib64/libwebkit2gtk-4.0.so.37.33.3
+/usr/lib64/libwebkit2gtk-4.0.so.37.33.4
 /usr/lib64/webkit2gtk-4.0/injected-bundle/libwebkit2gtkinjectedbundle.so
 
-%files license
+%files libexec
 %defattr(-,root,root,-)
-/usr/share/doc/webkitgtk/Source_JavaScriptCore_COPYING.LIB
-/usr/share/doc/webkitgtk/Source_JavaScriptCore_icu_LICENSE
-/usr/share/doc/webkitgtk/Source_ThirdParty_ANGLE_LICENSE
-/usr/share/doc/webkitgtk/Source_ThirdParty_ANGLE_src_common_third_party_smhasher_LICENSE
-/usr/share/doc/webkitgtk/Source_ThirdParty_ANGLE_src_tests_third_party_rapidjson_LICENSE
-/usr/share/doc/webkitgtk/Source_ThirdParty_ANGLE_src_third_party_compiler_LICENSE
-/usr/share/doc/webkitgtk/Source_ThirdParty_ANGLE_src_third_party_libXNVCtrl_LICENSE
-/usr/share/doc/webkitgtk/Source_ThirdParty_gtest_COPYING
-/usr/share/doc/webkitgtk/Source_WTF_icu_LICENSE
-/usr/share/doc/webkitgtk/Source_WTF_wtf_dtoa_COPYING
-/usr/share/doc/webkitgtk/Source_WTF_wtf_dtoa_LICENSE
-/usr/share/doc/webkitgtk/Source_WebCore_LICENSE-APPLE
-/usr/share/doc/webkitgtk/Source_WebCore_LICENSE-LGPL-2
-/usr/share/doc/webkitgtk/Source_WebCore_LICENSE-LGPL-2.1
-/usr/share/doc/webkitgtk/Source_WebCore_icu_LICENSE
-/usr/share/doc/webkitgtk/Source_WebInspectorUI_UserInterface_External_CodeMirror_LICENSE
-/usr/share/doc/webkitgtk/Source_WebInspectorUI_UserInterface_External_ESLint_LICENSE
-/usr/share/doc/webkitgtk/Source_WebInspectorUI_UserInterface_External_Esprima_LICENSE
-/usr/share/doc/webkitgtk/Source_WebInspectorUI_UserInterface_External_three.js_LICENSE
+/usr/libexec/webkit2gtk-4.0/MiniBrowser
+/usr/libexec/webkit2gtk-4.0/WebKitNetworkProcess
+/usr/libexec/webkit2gtk-4.0/WebKitPluginProcess
+/usr/libexec/webkit2gtk-4.0/WebKitPluginProcess2
+/usr/libexec/webkit2gtk-4.0/WebKitStorageProcess
+/usr/libexec/webkit2gtk-4.0/WebKitWebProcess
+/usr/libexec/webkit2gtk-4.0/jsc
+
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/webkitgtk/Source_JavaScriptCore_COPYING.LIB
+/usr/share/package-licenses/webkitgtk/Source_JavaScriptCore_icu_LICENSE
+/usr/share/package-licenses/webkitgtk/Source_ThirdParty_ANGLE_LICENSE
+/usr/share/package-licenses/webkitgtk/Source_ThirdParty_ANGLE_src_common_third_party_smhasher_LICENSE
+/usr/share/package-licenses/webkitgtk/Source_ThirdParty_ANGLE_src_tests_third_party_rapidjson_LICENSE
+/usr/share/package-licenses/webkitgtk/Source_ThirdParty_ANGLE_src_third_party_compiler_LICENSE
+/usr/share/package-licenses/webkitgtk/Source_ThirdParty_ANGLE_src_third_party_libXNVCtrl_LICENSE
+/usr/share/package-licenses/webkitgtk/Source_ThirdParty_gtest_COPYING
+/usr/share/package-licenses/webkitgtk/Source_WTF_icu_LICENSE
+/usr/share/package-licenses/webkitgtk/Source_WTF_wtf_dtoa_COPYING
+/usr/share/package-licenses/webkitgtk/Source_WTF_wtf_dtoa_LICENSE
+/usr/share/package-licenses/webkitgtk/Source_WebCore_LICENSE-APPLE
+/usr/share/package-licenses/webkitgtk/Source_WebCore_LICENSE-LGPL-2
+/usr/share/package-licenses/webkitgtk/Source_WebCore_LICENSE-LGPL-2.1
+/usr/share/package-licenses/webkitgtk/Source_WebCore_icu_LICENSE
+/usr/share/package-licenses/webkitgtk/Source_WebInspectorUI_UserInterface_External_CodeMirror_LICENSE
+/usr/share/package-licenses/webkitgtk/Source_WebInspectorUI_UserInterface_External_ESLint_LICENSE
+/usr/share/package-licenses/webkitgtk/Source_WebInspectorUI_UserInterface_External_Esprima_LICENSE
+/usr/share/package-licenses/webkitgtk/Source_WebInspectorUI_UserInterface_External_three.js_LICENSE
 
 %files locales -f WebKit2GTK-4.0.lang
 %defattr(-,root,root,-)
