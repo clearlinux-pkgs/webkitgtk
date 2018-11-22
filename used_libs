@@ -34,9 +34,9 @@ libgtk-3.so.0
 libgtk-x11-2.0.so.0
 libharfbuzz-icu.so.0
 libharfbuzz.so.0
-libicudata.so.61
-libicui18n.so.61
-libicuuc.so.61
+libicudata.so.63
+libicui18n.so.63
+libicuuc.so.63
 libjpeg.so.62
 libm.so.6
 libnotify.so.4
