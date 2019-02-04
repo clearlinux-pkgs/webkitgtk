@@ -5,12 +5,12 @@
 # Source0 file verified with key 0x91C559DBE4C9123B (aperez@igalia.com)
 #
 Name     : webkitgtk
-Version  : 2.22.4
-Release  : 42
-URL      : https://webkitgtk.org/releases/webkitgtk-2.22.4.tar.xz
-Source0  : https://webkitgtk.org/releases/webkitgtk-2.22.4.tar.xz
-Source99 : https://webkitgtk.org/releases/webkitgtk-2.22.4.tar.xz.asc
-Summary  : Web content engine for GTK+
+Version  : 2.22.5
+Release  : 43
+URL      : https://webkitgtk.org/releases/webkitgtk-2.22.5.tar.xz
+Source0  : https://webkitgtk.org/releases/webkitgtk-2.22.5.tar.xz
+Source99 : https://webkitgtk.org/releases/webkitgtk-2.22.5.tar.xz.asc
+Summary  : Legacy Web content engine for GTK+ 3
 Group    : Development/Tools
 License  : BSD-2-Clause BSD-3-Clause ICU LGPL-2.0 LGPL-2.1 MIT
 Requires: webkitgtk-bin = %{version}-%{release}
@@ -175,7 +175,7 @@ locales components for the webkitgtk package.
 
 
 %prep
-%setup -q -n webkitgtk-2.22.4
+%setup -q -n webkitgtk-2.22.5
 %patch1 -p1
 
 %build
@@ -183,7 +183,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1542844848
+export SOURCE_DATE_EPOCH=1549255371
 unset LD_AS_NEEDED
 mkdir -p clr-build
 pushd clr-build
@@ -192,11 +192,11 @@ export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-i
 export FFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math -std=gnu++98"
 %cmake .. -DPORT=GTK -DENABLE_GEOLOCATION=off -DENABLE_SPELLCHECK=off -DUSE_LIBHYPHEN=off -DUSE_LD_GOLD=off -DUSE_SYSTEM_MALLOC=on -DENABLE_MINIBROWSER=ON  -DCMAKE_BUILD_TYPE=Release -DUSE_GSTREAMER_GL=OFF -DPYTHON=/usr/bin/python2
-make  %{?_smp_mflags} VERBOSE=1
+make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1542844848
+export SOURCE_DATE_EPOCH=1549255371
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/webkitgtk
 cp Source/JavaScriptCore/COPYING.LIB %{buildroot}/usr/share/package-licenses/webkitgtk/Source_JavaScriptCore_COPYING.LIB
@@ -451,9 +451,9 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libjavascriptcoregtk-4.0.so.18
-/usr/lib64/libjavascriptcoregtk-4.0.so.18.11.5
+/usr/lib64/libjavascriptcoregtk-4.0.so.18.11.6
 /usr/lib64/libwebkit2gtk-4.0.so.37
-/usr/lib64/libwebkit2gtk-4.0.so.37.33.5
+/usr/lib64/libwebkit2gtk-4.0.so.37.33.6
 /usr/lib64/webkit2gtk-4.0/injected-bundle/libwebkit2gtkinjectedbundle.so
 
 %files libexec
