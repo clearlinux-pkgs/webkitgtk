@@ -4952,6 +4952,7 @@ libjavascriptcoregtk-4.0.so.18:_ZN3JSC3DFG10ClobberSetD2Ev
 libjavascriptcoregtk-4.0.so.18:_ZN3JSC3DFG10CommonData10invalidateEv
 libjavascriptcoregtk-4.0.so.18:_ZN3JSC3DFG10CommonData11shrinkToFitEv
 libjavascriptcoregtk-4.0.so.18:_ZN3JSC3DFG10CommonData13addCodeOriginENS_10CodeOriginE
+libjavascriptcoregtk-4.0.so.18:_ZN3JSC3DFG10CommonData16clearWatchpointsEv
 libjavascriptcoregtk-4.0.so.18:_ZN3JSC3DFG10CommonData18isVMTrapBreakpointEPv
 libjavascriptcoregtk-4.0.so.18:_ZN3JSC3DFG10CommonData18validateReferencesERKNS_17TrackedReferencesE
 libjavascriptcoregtk-4.0.so.18:_ZN3JSC3DFG10CommonData19removeCallSiteIndexENS_13CallSiteIndexE
