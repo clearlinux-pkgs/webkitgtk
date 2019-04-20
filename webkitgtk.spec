@@ -6,7 +6,7 @@
 #
 Name     : webkitgtk
 Version  : 2.24.1
-Release  : 47
+Release  : 48
 URL      : https://webkitgtk.org/releases/webkitgtk-2.24.1.tar.xz
 Source0  : https://webkitgtk.org/releases/webkitgtk-2.24.1.tar.xz
 Source99 : https://webkitgtk.org/releases/webkitgtk-2.24.1.tar.xz.asc
