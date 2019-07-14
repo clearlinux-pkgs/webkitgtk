@@ -1,1 +1,3 @@
 # This file contains recursive sources that require this package
+evolution
+perl-Gtk3-WebKit
