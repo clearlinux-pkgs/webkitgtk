@@ -28,3 +28,5 @@ libgpg-error-dev
 python3-dev
 python-dev
 nghttp2-dev
+xdg-dbus-proxy
+bubblewrap
