@@ -6,7 +6,7 @@
 #
 Name     : webkitgtk
 Version  : 2.28.2
-Release  : 56
+Release  : 57
 URL      : https://webkitgtk.org/releases/webkitgtk-2.28.2.tar.xz
 Source0  : https://webkitgtk.org/releases/webkitgtk-2.28.2.tar.xz
 Source1  : https://webkitgtk.org/releases/webkitgtk-2.28.2.tar.xz.asc
