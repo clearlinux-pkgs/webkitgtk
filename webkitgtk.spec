@@ -6,7 +6,7 @@
 #
 Name     : webkitgtk
 Version  : 2.28.4
-Release  : 60
+Release  : 61
 URL      : https://webkitgtk.org/releases/webkitgtk-2.28.4.tar.xz
 Source0  : https://webkitgtk.org/releases/webkitgtk-2.28.4.tar.xz
 Source1  : https://webkitgtk.org/releases/webkitgtk-2.28.4.tar.xz.asc
@@ -19,6 +19,8 @@ Requires: webkitgtk-lib = %{version}-%{release}
 Requires: webkitgtk-libexec = %{version}-%{release}
 Requires: webkitgtk-license = %{version}-%{release}
 Requires: webkitgtk-locales = %{version}-%{release}
+Requires: bubblewrap
+Requires: xdg-dbus-proxy
 BuildRequires : bison
 BuildRequires : bubblewrap
 BuildRequires : buildreq-cmake
