@@ -5,14 +5,14 @@
 # Source0 file verified with key 0xF3D322D0EC4582C3 (cgarcia@igalia.com)
 #
 Name     : webkitgtk
-Version  : 2.28.4
-Release  : 61
-URL      : https://webkitgtk.org/releases/webkitgtk-2.28.4.tar.xz
-Source0  : https://webkitgtk.org/releases/webkitgtk-2.28.4.tar.xz
-Source1  : https://webkitgtk.org/releases/webkitgtk-2.28.4.tar.xz.asc
+Version  : 2.30.3
+Release  : 62
+URL      : https://webkitgtk.org/releases/webkitgtk-2.30.3.tar.xz
+Source0  : https://webkitgtk.org/releases/webkitgtk-2.30.3.tar.xz
+Source1  : https://webkitgtk.org/releases/webkitgtk-2.30.3.tar.xz.asc
 Summary  : Web content engine for GTK - web process extensions
 Group    : Development/Tools
-License  : Apache-2.0 BSD-2-Clause BSD-3-Clause ICU LGPL-2.0 LGPL-2.1 MIT
+License  : Apache-2.0 BSD-2-Clause BSD-3-Clause GPL-2.0 GPL-3.0 LGPL-2.0 LGPL-2.1 MIT
 Requires: webkitgtk-bin = %{version}-%{release}
 Requires: webkitgtk-data = %{version}-%{release}
 Requires: webkitgtk-lib = %{version}-%{release}
@@ -68,7 +68,6 @@ BuildRequires : pkgconfig(cairo-gl)
 BuildRequires : pkgconfig(egl)
 BuildRequires : pkgconfig(epoxy)
 BuildRequires : pkgconfig(fontconfig)
-BuildRequires : pkgconfig(gdk-3.0)
 BuildRequires : pkgconfig(gio-unix-2.0)
 BuildRequires : pkgconfig(gl)
 BuildRequires : pkgconfig(glesv2)
@@ -76,9 +75,6 @@ BuildRequires : pkgconfig(glib-2.0)
 BuildRequires : pkgconfig(gobject-introspection-1.0)
 BuildRequires : pkgconfig(gtk+-2.0)
 BuildRequires : pkgconfig(gtk+-3.0)
-BuildRequires : pkgconfig(gtk+-unix-print-3.0)
-BuildRequires : pkgconfig(gtk+-wayland-3.0)
-BuildRequires : pkgconfig(gtk+-x11-3.0)
 BuildRequires : pkgconfig(harfbuzz)
 BuildRequires : pkgconfig(harfbuzz-icu)
 BuildRequires : pkgconfig(libnotify)
@@ -86,8 +82,10 @@ BuildRequires : pkgconfig(libpsl)
 BuildRequires : pkgconfig(libseccomp)
 BuildRequires : pkgconfig(libsecret-1)
 BuildRequires : pkgconfig(libsoup-2.4)
+BuildRequires : pkgconfig(libsystemd)
 BuildRequires : pkgconfig(libtasn1)
 BuildRequires : pkgconfig(libwebp)
+BuildRequires : pkgconfig(libwoff2common)
 BuildRequires : pkgconfig(libwoff2dec)
 BuildRequires : pkgconfig(sqlite3)
 BuildRequires : pkgconfig(wayland-client)
@@ -105,8 +103,11 @@ BuildRequires : xdg-dbus-proxy
 BuildRequires : zlib-dev
 
 %description
-The headers in this directory are for compiling on Mac OS X 10.4 and newer.
-The Mac OS X 10.4 and subsequent releases include the ICU binary, but not ICU headers.
+This module is a simple module that parses the proposed MIME spec listed
+at http://freedesktop.org/.  It is currently targeted at version 0.12.
+There are no formal releases planned for this module, and it is not
+intended to be installed at this time.  Rather, it is meant to be used
+by other libraries or applications to add support for the MIME system.
 
 %package bin
 Summary: bin components for the webkitgtk package.
@@ -177,15 +178,15 @@ locales components for the webkitgtk package.
 
 
 %prep
-%setup -q -n webkitgtk-2.28.4
-cd %{_builddir}/webkitgtk-2.28.4
+%setup -q -n webkitgtk-2.30.3
+cd %{_builddir}/webkitgtk-2.30.3
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1595959709
+export SOURCE_DATE_EPOCH=1605901473
 unset LD_AS_NEEDED
 mkdir -p clr-build
 pushd clr-build
@@ -199,30 +200,30 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1595959709
+export SOURCE_DATE_EPOCH=1605901473
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/webkitgtk
-cp %{_builddir}/webkitgtk-2.28.4/Source/JavaScriptCore/COPYING.LIB %{buildroot}/usr/share/package-licenses/webkitgtk/130f5281a2ef2a49822787e013323bde2ff119dd
-cp %{_builddir}/webkitgtk-2.28.4/Source/JavaScriptCore/icu/LICENSE %{buildroot}/usr/share/package-licenses/webkitgtk/051b11750790c7fbca4135c01b55d52cbed8868b
-cp %{_builddir}/webkitgtk-2.28.4/Source/ThirdParty/ANGLE/LICENSE %{buildroot}/usr/share/package-licenses/webkitgtk/37126a0eda0b30f44070f59e6833187e99a7eb83
-cp %{_builddir}/webkitgtk-2.28.4/Source/ThirdParty/ANGLE/src/common/third_party/smhasher/LICENSE %{buildroot}/usr/share/package-licenses/webkitgtk/819e6935c5ac3ae7bcb7470cb81c07cc383e80eb
-cp %{_builddir}/webkitgtk-2.28.4/Source/ThirdParty/ANGLE/src/common/third_party/xxhash/LICENSE %{buildroot}/usr/share/package-licenses/webkitgtk/390f8904578d05817ab7cafe1f470cd283bcfe93
-cp %{_builddir}/webkitgtk-2.28.4/Source/ThirdParty/ANGLE/src/tests/test_utils/third_party/LICENSE %{buildroot}/usr/share/package-licenses/webkitgtk/5ebf8574fea54a1c549c090652f327376b1376aa
-cp %{_builddir}/webkitgtk-2.28.4/Source/ThirdParty/ANGLE/src/third_party/compiler/LICENSE %{buildroot}/usr/share/package-licenses/webkitgtk/dbb4b3a7c493484294639613ed59f1f5e7f94ada
-cp %{_builddir}/webkitgtk-2.28.4/Source/ThirdParty/ANGLE/src/third_party/libXNVCtrl/LICENSE %{buildroot}/usr/share/package-licenses/webkitgtk/665f7371da2b70dc3908c7c1e8b43bbbada8e4c3
-cp %{_builddir}/webkitgtk-2.28.4/Source/ThirdParty/ANGLE/src/third_party/volk/LICENSE.md %{buildroot}/usr/share/package-licenses/webkitgtk/f12c9d338be92bacfa1e21c513e3517ad3190931
-cp %{_builddir}/webkitgtk-2.28.4/Source/ThirdParty/ANGLE/util/windows/third_party/StackWalker/LICENSE %{buildroot}/usr/share/package-licenses/webkitgtk/33fe6f9feb6fc711ff8b5dc59283453f84fcbfe3
-cp %{_builddir}/webkitgtk-2.28.4/Source/ThirdParty/gtest/LICENSE %{buildroot}/usr/share/package-licenses/webkitgtk/5a2314153eadadc69258a9429104cd11804ea304
-cp %{_builddir}/webkitgtk-2.28.4/Source/WTF/icu/LICENSE %{buildroot}/usr/share/package-licenses/webkitgtk/051b11750790c7fbca4135c01b55d52cbed8868b
-cp %{_builddir}/webkitgtk-2.28.4/Source/WTF/wtf/dtoa/COPYING %{buildroot}/usr/share/package-licenses/webkitgtk/8d434c9c1704b544a8b0652efbc323380b67f9bc
-cp %{_builddir}/webkitgtk-2.28.4/Source/WTF/wtf/dtoa/LICENSE %{buildroot}/usr/share/package-licenses/webkitgtk/8d434c9c1704b544a8b0652efbc323380b67f9bc
-cp %{_builddir}/webkitgtk-2.28.4/Source/WebCore/LICENSE-APPLE %{buildroot}/usr/share/package-licenses/webkitgtk/7ea0ac726dfef36527dfe261d1f2ae28c8f96d4d
-cp %{_builddir}/webkitgtk-2.28.4/Source/WebCore/LICENSE-LGPL-2 %{buildroot}/usr/share/package-licenses/webkitgtk/31c49697af1092e3e9e230f93c0e0f7dd9694abb
-cp %{_builddir}/webkitgtk-2.28.4/Source/WebCore/LICENSE-LGPL-2.1 %{buildroot}/usr/share/package-licenses/webkitgtk/1a180647a31404e0cf993fa333cdb7f7e75eaba5
-cp %{_builddir}/webkitgtk-2.28.4/Source/WebCore/icu/LICENSE %{buildroot}/usr/share/package-licenses/webkitgtk/051b11750790c7fbca4135c01b55d52cbed8868b
-cp %{_builddir}/webkitgtk-2.28.4/Source/WebInspectorUI/UserInterface/External/CodeMirror/LICENSE %{buildroot}/usr/share/package-licenses/webkitgtk/e7ada8ae78ebdb41cc7c8e9dbad43c5870412bd7
-cp %{_builddir}/webkitgtk-2.28.4/Source/WebInspectorUI/UserInterface/External/Esprima/LICENSE %{buildroot}/usr/share/package-licenses/webkitgtk/26dd70b52c7c7111ca8913fc0bc240dc28ca15c0
-cp %{_builddir}/webkitgtk-2.28.4/Source/WebInspectorUI/UserInterface/External/three.js/LICENSE %{buildroot}/usr/share/package-licenses/webkitgtk/eb5e50200f181f35271557d301ffd7784df64f79
+cp %{_builddir}/webkitgtk-2.30.3/Source/JavaScriptCore/COPYING.LIB %{buildroot}/usr/share/package-licenses/webkitgtk/130f5281a2ef2a49822787e013323bde2ff119dd
+cp %{_builddir}/webkitgtk-2.30.3/Source/ThirdParty/ANGLE/LICENSE %{buildroot}/usr/share/package-licenses/webkitgtk/37126a0eda0b30f44070f59e6833187e99a7eb83
+cp %{_builddir}/webkitgtk-2.30.3/Source/ThirdParty/ANGLE/src/common/third_party/smhasher/LICENSE %{buildroot}/usr/share/package-licenses/webkitgtk/819e6935c5ac3ae7bcb7470cb81c07cc383e80eb
+cp %{_builddir}/webkitgtk-2.30.3/Source/ThirdParty/ANGLE/src/common/third_party/xxhash/LICENSE %{buildroot}/usr/share/package-licenses/webkitgtk/390f8904578d05817ab7cafe1f470cd283bcfe93
+cp %{_builddir}/webkitgtk-2.30.3/Source/ThirdParty/ANGLE/src/libANGLE/renderer/vulkan/shaders/src/third_party/ffx_spd/LICENSE %{buildroot}/usr/share/package-licenses/webkitgtk/18f2c8a1b68673441f7ae71085ce98b7cad01734
+cp %{_builddir}/webkitgtk-2.30.3/Source/ThirdParty/ANGLE/src/tests/test_utils/third_party/LICENSE %{buildroot}/usr/share/package-licenses/webkitgtk/5ebf8574fea54a1c549c090652f327376b1376aa
+cp %{_builddir}/webkitgtk-2.30.3/Source/ThirdParty/ANGLE/src/third_party/compiler/LICENSE %{buildroot}/usr/share/package-licenses/webkitgtk/dbb4b3a7c493484294639613ed59f1f5e7f94ada
+cp %{_builddir}/webkitgtk-2.30.3/Source/ThirdParty/ANGLE/src/third_party/libXNVCtrl/LICENSE %{buildroot}/usr/share/package-licenses/webkitgtk/665f7371da2b70dc3908c7c1e8b43bbbada8e4c3
+cp %{_builddir}/webkitgtk-2.30.3/Source/ThirdParty/ANGLE/src/third_party/volk/LICENSE.md %{buildroot}/usr/share/package-licenses/webkitgtk/f12c9d338be92bacfa1e21c513e3517ad3190931
+cp %{_builddir}/webkitgtk-2.30.3/Source/ThirdParty/ANGLE/tools/flex-bison/third_party/m4sugar/LICENSE %{buildroot}/usr/share/package-licenses/webkitgtk/06877624ea5c77efe3b7e39b0f909eda6e25a4ec
+cp %{_builddir}/webkitgtk-2.30.3/Source/ThirdParty/ANGLE/tools/flex-bison/third_party/skeletons/LICENSE %{buildroot}/usr/share/package-licenses/webkitgtk/8624bcdae55baeef00cd11d5dfcfa60f68710a02
+cp %{_builddir}/webkitgtk-2.30.3/Source/ThirdParty/ANGLE/util/windows/third_party/StackWalker/LICENSE %{buildroot}/usr/share/package-licenses/webkitgtk/33fe6f9feb6fc711ff8b5dc59283453f84fcbfe3
+cp %{_builddir}/webkitgtk-2.30.3/Source/ThirdParty/gtest/LICENSE %{buildroot}/usr/share/package-licenses/webkitgtk/5a2314153eadadc69258a9429104cd11804ea304
+cp %{_builddir}/webkitgtk-2.30.3/Source/WTF/wtf/dtoa/COPYING %{buildroot}/usr/share/package-licenses/webkitgtk/8d434c9c1704b544a8b0652efbc323380b67f9bc
+cp %{_builddir}/webkitgtk-2.30.3/Source/WTF/wtf/dtoa/LICENSE %{buildroot}/usr/share/package-licenses/webkitgtk/8d434c9c1704b544a8b0652efbc323380b67f9bc
+cp %{_builddir}/webkitgtk-2.30.3/Source/WebCore/LICENSE-APPLE %{buildroot}/usr/share/package-licenses/webkitgtk/7ea0ac726dfef36527dfe261d1f2ae28c8f96d4d
+cp %{_builddir}/webkitgtk-2.30.3/Source/WebCore/LICENSE-LGPL-2 %{buildroot}/usr/share/package-licenses/webkitgtk/31c49697af1092e3e9e230f93c0e0f7dd9694abb
+cp %{_builddir}/webkitgtk-2.30.3/Source/WebCore/LICENSE-LGPL-2.1 %{buildroot}/usr/share/package-licenses/webkitgtk/1a180647a31404e0cf993fa333cdb7f7e75eaba5
+cp %{_builddir}/webkitgtk-2.30.3/Source/WebInspectorUI/UserInterface/External/CodeMirror/LICENSE %{buildroot}/usr/share/package-licenses/webkitgtk/e7ada8ae78ebdb41cc7c8e9dbad43c5870412bd7
+cp %{_builddir}/webkitgtk-2.30.3/Source/WebInspectorUI/UserInterface/External/Esprima/LICENSE %{buildroot}/usr/share/package-licenses/webkitgtk/26dd70b52c7c7111ca8913fc0bc240dc28ca15c0
+cp %{_builddir}/webkitgtk-2.30.3/Source/WebInspectorUI/UserInterface/External/three.js/LICENSE %{buildroot}/usr/share/package-licenses/webkitgtk/eb5e50200f181f35271557d301ffd7784df64f79
 pushd clr-build
 %make_install
 popd
@@ -338,7 +339,9 @@ popd
 /usr/include/webkitgtk-4.0/webkit2/WebKitWebViewBase.h
 /usr/include/webkitgtk-4.0/webkit2/WebKitWebViewSessionState.h
 /usr/include/webkitgtk-4.0/webkit2/WebKitWebsiteData.h
+/usr/include/webkitgtk-4.0/webkit2/WebKitWebsiteDataAccessPermissionRequest.h
 /usr/include/webkitgtk-4.0/webkit2/WebKitWebsiteDataManager.h
+/usr/include/webkitgtk-4.0/webkit2/WebKitWebsitePolicies.h
 /usr/include/webkitgtk-4.0/webkit2/WebKitWindowProperties.h
 /usr/include/webkitgtk-4.0/webkit2/webkit-web-extension.h
 /usr/include/webkitgtk-4.0/webkit2/webkit2.h
@@ -464,23 +467,23 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libjavascriptcoregtk-4.0.so.18
-/usr/lib64/libjavascriptcoregtk-4.0.so.18.16.7
+/usr/lib64/libjavascriptcoregtk-4.0.so.18.17.11
 /usr/lib64/libwebkit2gtk-4.0.so.37
-/usr/lib64/libwebkit2gtk-4.0.so.37.44.6
+/usr/lib64/libwebkit2gtk-4.0.so.37.49.7
 /usr/lib64/webkit2gtk-4.0/injected-bundle/libwebkit2gtkinjectedbundle.so
 
 %files libexec
 %defattr(-,root,root,-)
 /usr/libexec/webkit2gtk-4.0/MiniBrowser
 /usr/libexec/webkit2gtk-4.0/WebKitNetworkProcess
-/usr/libexec/webkit2gtk-4.0/WebKitPluginProcess
 /usr/libexec/webkit2gtk-4.0/WebKitWebProcess
 /usr/libexec/webkit2gtk-4.0/jsc
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/webkitgtk/051b11750790c7fbca4135c01b55d52cbed8868b
+/usr/share/package-licenses/webkitgtk/06877624ea5c77efe3b7e39b0f909eda6e25a4ec
 /usr/share/package-licenses/webkitgtk/130f5281a2ef2a49822787e013323bde2ff119dd
+/usr/share/package-licenses/webkitgtk/18f2c8a1b68673441f7ae71085ce98b7cad01734
 /usr/share/package-licenses/webkitgtk/1a180647a31404e0cf993fa333cdb7f7e75eaba5
 /usr/share/package-licenses/webkitgtk/26dd70b52c7c7111ca8913fc0bc240dc28ca15c0
 /usr/share/package-licenses/webkitgtk/31c49697af1092e3e9e230f93c0e0f7dd9694abb
@@ -492,6 +495,7 @@ popd
 /usr/share/package-licenses/webkitgtk/665f7371da2b70dc3908c7c1e8b43bbbada8e4c3
 /usr/share/package-licenses/webkitgtk/7ea0ac726dfef36527dfe261d1f2ae28c8f96d4d
 /usr/share/package-licenses/webkitgtk/819e6935c5ac3ae7bcb7470cb81c07cc383e80eb
+/usr/share/package-licenses/webkitgtk/8624bcdae55baeef00cd11d5dfcfa60f68710a02
 /usr/share/package-licenses/webkitgtk/8d434c9c1704b544a8b0652efbc323380b67f9bc
 /usr/share/package-licenses/webkitgtk/dbb4b3a7c493484294639613ed59f1f5e7f94ada
 /usr/share/package-licenses/webkitgtk/e7ada8ae78ebdb41cc7c8e9dbad43c5870412bd7

@@ -29,9 +29,9 @@ libgstvideo-1.0.so.0
 libgtk-3.so.0
 libharfbuzz-icu.so.0
 libharfbuzz.so.0
-libicudata.so.64
-libicui18n.so.64
-libicuuc.so.64
+libicudata.so.67
+libicui18n.so.67
+libicuuc.so.67
 libjpeg.so.62
 libm.so.6
 libnotify.so.4
@@ -45,6 +45,7 @@ libsecret-1.so.0
 libsoup-2.4.so.1
 libsqlite3.so.0
 libstdc++.so.6
+libsystemd.so.0
 libtasn1.so.6
 libwayland-client.so.0
 libwayland-egl.so.1
