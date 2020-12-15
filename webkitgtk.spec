@@ -6,7 +6,7 @@
 #
 Name     : webkitgtk
 Version  : 2.30.3
-Release  : 64
+Release  : 65
 URL      : https://webkitgtk.org/releases/webkitgtk-2.30.3.tar.xz
 Source0  : https://webkitgtk.org/releases/webkitgtk-2.30.3.tar.xz
 Source1  : https://webkitgtk.org/releases/webkitgtk-2.30.3.tar.xz.asc
