@@ -10075,6 +10075,7 @@ libjavascriptcoregtk-4.0.so.18:_ZN3WTF7CStringC2EPKcm
 libjavascriptcoregtk-4.0.so.18:_ZN3WTF7RunLoop11performWorkEv
 libjavascriptcoregtk-4.0.so.18:_ZN3WTF7RunLoop13dispatchAfterENS_7SecondsEONS_8FunctionIFvvEEE
 libjavascriptcoregtk-4.0.so.18:_ZN3WTF7RunLoop14initializeMainEv
+libjavascriptcoregtk-4.0.so.18:_ZN3WTF7RunLoop14threadWillExitEv
 libjavascriptcoregtk-4.0.so.18:_ZN3WTF7RunLoop38suspendFunctionDispatchForCurrentCycleEv
 libjavascriptcoregtk-4.0.so.18:_ZN3WTF7RunLoop3runEv
 libjavascriptcoregtk-4.0.so.18:_ZN3WTF7RunLoop4mainEv
