@@ -6,7 +6,7 @@
 #
 Name     : webkitgtk
 Version  : 2.30.5
-Release  : 67
+Release  : 68
 URL      : https://webkitgtk.org/releases/webkitgtk-2.30.5.tar.xz
 Source0  : https://webkitgtk.org/releases/webkitgtk-2.30.5.tar.xz
 Source1  : https://webkitgtk.org/releases/webkitgtk-2.30.5.tar.xz.asc
@@ -42,7 +42,7 @@ BuildRequires : gst-plugins-base-dev
 BuildRequires : gstreamer-dev
 BuildRequires : harfbuzz-dev
 BuildRequires : icu4c-dev
-BuildRequires : libX11-dev libICE-dev libSM-dev libXau-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXft-dev libXi-dev libXinerama-dev libXi-dev libXmu-dev libXpm-dev libXrandr-dev libXrender-dev libXres-dev libXScrnSaver-dev libXt-dev libXtst-dev libXv-dev libXxf86misc-dev libXxf86vm-dev
+BuildRequires : libX11-dev libICE-dev libSM-dev libXau-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXft-dev libXi-dev libXinerama-dev libXi-dev libXmu-dev libXpm-dev libXrandr-dev libXrender-dev libXres-dev libXScrnSaver-dev libXt-dev libXtst-dev libXv-dev libXxf86vm-dev
 BuildRequires : libXcomposite-dev
 BuildRequires : libc-bin
 BuildRequires : libgcrypt-dev
