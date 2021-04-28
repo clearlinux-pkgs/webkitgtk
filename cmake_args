@@ -10,3 +10,4 @@
 -DPYTHON=/usr/bin/python2
 -DUSE_OPENJPEG=off
 -DUSE_WPE_RENDERER=off
+-DENABLE_GAMEPAD=off
