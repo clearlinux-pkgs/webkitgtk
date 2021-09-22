@@ -17,6 +17,7 @@ libgio-2.0.so.0
 libglib-2.0.so.0
 libgmodule-2.0.so.0
 libgobject-2.0.so.0
+libgpg-error.so.0
 libgstapp-1.0.so.0
 libgstaudio-1.0.so.0
 libgstbase-1.0.so.0
@@ -32,6 +33,7 @@ libicudata.so.67
 libicui18n.so.67
 libicuuc.so.67
 libjpeg.so.62
+liblcms2.so.2
 libm.so.6
 libnotify.so.4
 libpango-1.0.so.0
