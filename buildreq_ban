@@ -1,3 +1,4 @@
 # This file contains build requirements that get picked up but are
 # undesirable. One entry per line, no whitespace.
 builtins_generate_combined_implementation-python
+python-dev

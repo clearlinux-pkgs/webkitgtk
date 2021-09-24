@@ -26,7 +26,6 @@ libwebp-dev
 libxslt-dev
 mesa-dev
 nghttp2-dev
-python-dev
 python3-dev
 ruby
 xdg-dbus-proxy
