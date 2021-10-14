@@ -6,7 +6,7 @@
 #
 Name     : webkitgtk
 Version  : 2.34.0
-Release  : 77
+Release  : 78
 URL      : https://webkitgtk.org/releases/webkitgtk-2.34.0.tar.xz
 Source0  : https://webkitgtk.org/releases/webkitgtk-2.34.0.tar.xz
 Source1  : https://webkitgtk.org/releases/webkitgtk-2.34.0.tar.xz.asc
@@ -200,7 +200,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1634074683
+export SOURCE_DATE_EPOCH=1634233911
 unset LD_AS_NEEDED
 mkdir -p clr-build
 pushd clr-build
@@ -252,7 +252,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1634074683
+export SOURCE_DATE_EPOCH=1634233911
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/webkitgtk
 cp %{_builddir}/webkitgtk-2.34.0/Source/JavaScriptCore/COPYING.LIB %{buildroot}/usr/share/package-licenses/webkitgtk/130f5281a2ef2a49822787e013323bde2ff119dd
@@ -281,12 +281,12 @@ cp %{_builddir}/webkitgtk-2.34.0/Source/WebInspectorUI/UserInterface/External/Es
 cp %{_builddir}/webkitgtk-2.34.0/Source/WebInspectorUI/UserInterface/External/three.js/LICENSE %{buildroot}/usr/share/package-licenses/webkitgtk/eb5e50200f181f35271557d301ffd7784df64f79
 pushd clr-build-avx2
 %make_install_v3  || :
-/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot}/usr/share/clear/optimized-elf/ %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 popd
 pushd clr-build
 %make_install
 popd
 %find_lang WebKit2GTK-4.1
+/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot}/usr/share/clear/optimized-elf/ %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
 %files
 %defattr(-,root,root,-)
