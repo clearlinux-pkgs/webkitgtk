@@ -6,7 +6,7 @@
 #
 Name     : webkitgtk
 Version  : 2.34.0
-Release  : 80
+Release  : 81
 URL      : https://webkitgtk.org/releases/webkitgtk-2.34.0.tar.xz
 Source0  : https://webkitgtk.org/releases/webkitgtk-2.34.0.tar.xz
 Source1  : https://webkitgtk.org/releases/webkitgtk-2.34.0.tar.xz.asc
@@ -104,6 +104,7 @@ BuildRequires : python3-dev
 BuildRequires : ruby
 BuildRequires : xdg-dbus-proxy
 BuildRequires : zlib-dev
+Patch1: gnuflags.patch
 
 %description
 This module is a simple module that parses the proposed MIME spec listed
@@ -194,13 +195,14 @@ locales components for the webkitgtk package.
 %prep
 %setup -q -n webkitgtk-2.34.0
 cd %{_builddir}/webkitgtk-2.34.0
+%patch1 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1634233911
+export SOURCE_DATE_EPOCH=1634330384
 unset LD_AS_NEEDED
 mkdir -p clr-build
 pushd clr-build
@@ -252,7 +254,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1634233911
+export SOURCE_DATE_EPOCH=1634330384
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/webkitgtk
 cp %{_builddir}/webkitgtk-2.34.0/Source/JavaScriptCore/COPYING.LIB %{buildroot}/usr/share/package-licenses/webkitgtk/130f5281a2ef2a49822787e013323bde2ff119dd

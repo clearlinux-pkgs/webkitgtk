@@ -1,0 +1,11 @@
+--- webkitgtk-2.34.0/Source/cmake/WebKitCompilerFlags.cmake~	2021-09-01 09:16:51.000000000 +0000
++++ webkitgtk-2.34.0/Source/cmake/WebKitCompilerFlags.cmake	2021-10-15 15:37:18.984561640 +0000
+@@ -303,7 +303,7 @@
+         #include <filesystem>
+         int main() { std::filesystem::path p1(\"\"); std::filesystem::status(p1); }
+     ")
+-    set(CMAKE_REQUIRED_FLAGS "--std=c++17")
++    set(CMAKE_REQUIRED_FLAGS "--std=gnu++17")
+     check_cxx_source_compiles("${FILESYSTEM_TEST_SOURCE}" STD_FILESYSTEM_IS_AVAILABLE)
+     if (NOT STD_FILESYSTEM_IS_AVAILABLE)
+         set(EXPERIMENTAL_FILESYSTEM_TEST_SOURCE "
