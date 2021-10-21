@@ -15050,7 +15050,6 @@ libwebkit2gtk-4.1.so.0:webkit_editor_state_is_paste_available
 libwebkit2gtk-4.1.so.0:webkit_editor_state_is_redo_available
 libwebkit2gtk-4.1.so.0:webkit_editor_state_is_undo_available
 libwebkit2gtk-4.1.so.0:webkit_editor_typing_attributes_get_type
-libwebkit2gtk-4.1.so.0:webkit_emoji_chooser_get_type
 libwebkit2gtk-4.1.so.0:webkit_favicon_database_clear
 libwebkit2gtk-4.1.so.0:webkit_favicon_database_error_get_type
 libwebkit2gtk-4.1.so.0:webkit_favicon_database_error_quark
