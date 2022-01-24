@@ -29,9 +29,9 @@ libgstvideo-1.0.so.0
 libgtk-3.so.0
 libharfbuzz-icu.so.0
 libharfbuzz.so.0
-libicudata.so.67
-libicui18n.so.67
-libicuuc.so.67
+libicudata.so.70
+libicui18n.so.70
+libicuuc.so.70
 libjpeg.so.62
 liblcms2.so.2
 libm.so.6
