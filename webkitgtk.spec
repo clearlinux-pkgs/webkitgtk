@@ -6,7 +6,7 @@
 #
 Name     : webkitgtk
 Version  : 2.34.4
-Release  : 87
+Release  : 88
 URL      : https://webkitgtk.org/releases/webkitgtk-2.34.4.tar.xz
 Source0  : https://webkitgtk.org/releases/webkitgtk-2.34.4.tar.xz
 Source1  : https://webkitgtk.org/releases/webkitgtk-2.34.4.tar.xz.asc
