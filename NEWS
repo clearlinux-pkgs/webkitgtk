@@ -1,86 +1,67 @@
 ================
-WebKitGTK 2.34.5
+WebKitGTK 2.36.0
 ================
 
-What's new in WebKitGTK 2.34.5?
+What's new in WebKitGTK 2.36.0?
 
-  - Improve VP8 codec selection when using GStreamer 1.20.
-  - Fix connecting to the accessiblity bus when using the Bubblewrap sandbox.
-  - Fix links being incorrectly activated when starting a pinch zoom gesture.
-  - Fix touch-based scrolling.
-  - Fix the build with recent toolchains based on GCC 12 and on older ones as
-    included e.g. in Ubuntu 18.04.
-  - Fix the build with ICU 60, version 61 is no longer required.
+  - Fix selection foreground color on text with decorations.
+  - Fix seeking on YouTube videos.
+  - Fix list item marker not exposed to a11y when not a direct child of a list item.
+  - Fix a crash while closing a page.
+  - Fix the build to make it reproducible again.
+  - Fix several crashes and rendering issues.
+
+=================
+WebKitGTK 2.35.90
+=================
+
+What's new in WebKitGTK 2.35.90?
+
+  - Fix scrolling with the mouse wheel on sites using overscroll-behavior.
+  - Suspend web processes after some time in the process cache.
+  - Fix renderning of horizontal scrollbars with themes enabling steppers.
+  - Ensure EGL displays are terminated before web process exits.
+  - Deinitialize gstreamer before web process exits.
+  - Make fonts under XDG_DATA_DIRS available in web process sanbox.
+  - Canonicalize paths passed to bubblewrap launcher.
+  - Fix several crashes and rendering issues.
+  - Translation updates: Hebrew.
+
+================
+WebKitGTK 2.35.3
+================
+
+What's new in WebKitGTK 2.35.3?
+
+  - Fix a crash at startup when bubblewrap sandbox is enabled.
+  - Fix a crash when starting a drag an drop on touchscreen.
   - Fix several crashes and rendering issues.
 
 ================
-WebKitGTK 2.34.4
+WebKitGTK 2.35.2
 ================
 
-What's new in WebKitGTK 2.34.4?
+What's new in WebKitGTK 2.35.2?
 
+  - Add new accessibility implementation using ATSPI DBus interfaces instead of ATK.
+  - Use native GtkWidgets for form validation popups.
+  - Add support for requestVideoFrameCallback.
+  - Add support for accent colors.
+  - Fix pinch zooming from a link to not activate the link.
+  - Fix kinetic scrolling via touch screen.
   - Fix several crashes and rendering issues.
 
 ================
-WebKitGTK 2.34.3
+WebKitGTK 2.35.1
 ================
 
-What's new in WebKitGTK 2.34.3?
+What's new in WebKitGTK 2.35.1?
 
-  - Make audio tools (like mixers) display the actual name of the application
-    producing sound, instead of a generic one.
-  - Fix several crashes and rendering issues.
-
-================
-WebKitGTK 2.34.2
-================
-
-What's new in WebKitGTK 2.34.2?
-
-  - Fix scrolling issues when pressing Home and PgDown keys.
-  - Update effective appearance after web process switch on navigation.
-  - Fix the build with video disabled.
-
-================
-WebKitGTK 2.34.1
-================
-
-What's new in WebKitGTK 2.34.1?
-
-  - Update user agent browser versions.
-  - Fix a crash with GTK >= 3.24.30.
-  - Fix a crash when loading videos on reddit.
-  - Fix file type detection when application calls g_desktop_app_info_set_as_default_for_extension() passing html.
-
-================
-WebKitGTK 2.34.0
-================
-
-What's new in WebKitGTK 2.34.0?
-
-  - Fix another regression in JavaScriptCore on 32bit systems.
-
-=================
-WebKitGTK 2.33.91
-=================
-
-What's new in WebKitGTK 2.33.91?
-
-  - Use the right display refresh monitor for animations in accelerated compositng mode.
-  - Fix several issues in JavaScriptCore on 32bit systems.
-  - Prefer python3 over python2 in CMake.
-
-=================
-WebKitGTK 2.33.90
-=================
-
-What's new in WebKitGTK 2.33.90?
-
-  - Show TLS protocol version and ciphersuite name in the inspector when building with libsoup3.
-  - Add multi-track support to media backend.
-  - Avoid strong alias computations in font fallback code.
-  - Fix deadlock tearing down pipeline when using fallback sink.
-  - Fix the build with gtk-doc enabled.
+  - Make user interactive threads (event handler, scrolling, ...) real time in linux.
+  - Add new API to set HTTP response information to custom uri schemes.
+  - Add support for media session.
+  - Change hardware-acceleration-policy setting default value to always.
+  - Fix jsc_value_object_define_property_accessor() to work with objects not having a wrapped instance.
   - Fix several crashes and rendering issues.
 
 ================
