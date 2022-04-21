@@ -19,3 +19,4 @@ libsoup-
 glx
 jxl
 opengl
+libseccomp

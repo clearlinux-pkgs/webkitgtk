@@ -40,7 +40,6 @@ libnotify.so.4
 libpango-1.0.so.0
 libpangocairo-1.0.so.0
 libpng16.so.16
-libseccomp.so.2
 libsecret-1.so.0
 libsoup-3.0.so.0
 libsqlite3.so.0
