@@ -6,7 +6,7 @@
 #
 Name     : webkitgtk
 Version  : 2.36.3
-Release  : 94
+Release  : 95
 URL      : https://webkitgtk.org/releases/webkitgtk-2.36.3.tar.xz
 Source0  : https://webkitgtk.org/releases/webkitgtk-2.36.3.tar.xz
 Source1  : https://webkitgtk.org/releases/webkitgtk-2.36.3.tar.xz.asc
@@ -201,7 +201,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1653860265
+export SOURCE_DATE_EPOCH=1656608972
 unset LD_AS_NEEDED
 mkdir -p clr-build
 pushd clr-build
@@ -255,7 +255,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1653860265
+export SOURCE_DATE_EPOCH=1656608972
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/webkitgtk
 cp %{_builddir}/webkitgtk-2.36.3/Source/JavaScriptCore/COPYING.LIB %{buildroot}/usr/share/package-licenses/webkitgtk/130f5281a2ef2a49822787e013323bde2ff119dd
@@ -298,7 +298,7 @@ pushd clr-build
 %make_install
 popd
 %find_lang WebKit2GTK-4.1
-/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot}/usr/share/clear/optimized-elf/ %{buildroot}/usr/share/clear/filemap/filemap-%{name}
+/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot} %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
 %files
 %defattr(-,root,root,-)
@@ -533,6 +533,8 @@ popd
 /usr/include/webkitgtk-4.1/webkitdom/webkitdom.h
 /usr/include/webkitgtk-4.1/webkitdom/webkitdomautocleanups.h
 /usr/include/webkitgtk-4.1/webkitdom/webkitdomdefines.h
+/usr/lib64/glibc-hwcaps/x86-64-v3/libjavascriptcoregtk-4.1.so
+/usr/lib64/glibc-hwcaps/x86-64-v3/libwebkit2gtk-4.1.so
 /usr/lib64/libjavascriptcoregtk-4.1.so
 /usr/lib64/libwebkit2gtk-4.1.so
 /usr/lib64/pkgconfig/javascriptcoregtk-4.1.pc
@@ -545,12 +547,15 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
+/usr/lib64/glibc-hwcaps/x86-64-v3/libjavascriptcoregtk-4.1.so.0
+/usr/lib64/glibc-hwcaps/x86-64-v3/libjavascriptcoregtk-4.1.so.0.1.7
+/usr/lib64/glibc-hwcaps/x86-64-v3/libwebkit2gtk-4.1.so.0
+/usr/lib64/glibc-hwcaps/x86-64-v3/libwebkit2gtk-4.1.so.0.1.7
 /usr/lib64/libjavascriptcoregtk-4.1.so.0
 /usr/lib64/libjavascriptcoregtk-4.1.so.0.1.7
 /usr/lib64/libwebkit2gtk-4.1.so.0
 /usr/lib64/libwebkit2gtk-4.1.so.0.1.7
 /usr/lib64/webkit2gtk-4.1/injected-bundle/libwebkit2gtkinjectedbundle.so
-/usr/share/clear/optimized-elf/lib*
 
 %files libexec
 %defattr(-,root,root,-)
