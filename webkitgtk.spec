@@ -6,7 +6,7 @@
 #
 Name     : webkitgtk
 Version  : 2.36.3
-Release  : 95
+Release  : 96
 URL      : https://webkitgtk.org/releases/webkitgtk-2.36.3.tar.xz
 Source0  : https://webkitgtk.org/releases/webkitgtk-2.36.3.tar.xz
 Source1  : https://webkitgtk.org/releases/webkitgtk-2.36.3.tar.xz.asc
@@ -556,6 +556,7 @@ popd
 /usr/lib64/libwebkit2gtk-4.1.so.0
 /usr/lib64/libwebkit2gtk-4.1.so.0.1.7
 /usr/lib64/webkit2gtk-4.1/injected-bundle/libwebkit2gtkinjectedbundle.so
+/usr/share/clear/optimized-elf/other*
 
 %files libexec
 %defattr(-,root,root,-)
