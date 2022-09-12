@@ -6,7 +6,7 @@
 #
 Name     : webkitgtk
 Version  : 2.36.7
-Release  : 103
+Release  : 104
 URL      : https://webkitgtk.org/releases/webkitgtk-2.36.7.tar.xz
 Source0  : https://webkitgtk.org/releases/webkitgtk-2.36.7.tar.xz
 Source1  : https://webkitgtk.org/releases/webkitgtk-2.36.7.tar.xz.asc
