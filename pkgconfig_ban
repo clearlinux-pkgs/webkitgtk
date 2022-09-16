@@ -20,3 +20,4 @@ glx
 jxl
 opengl
 libseccomp
+breakpad-client

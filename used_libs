@@ -19,6 +19,7 @@ libglib-2.0.so.0
 libgmodule-2.0.so.0
 libgobject-2.0.so.0
 libgpg-error.so.0
+libgstallocators-1.0.so.0
 libgstapp-1.0.so.0
 libgstaudio-1.0.so.0
 libgstbase-1.0.so.0
@@ -36,7 +37,6 @@ libicuuc.so.70
 libjpeg.so.62
 liblcms2.so.2
 libm.so.6
-libnotify.so.4
 libpango-1.0.so.0
 libpangocairo-1.0.so.0
 libpng16.so.16
