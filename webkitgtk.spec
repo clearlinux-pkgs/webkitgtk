@@ -6,16 +6,14 @@
 #
 Name     : webkitgtk
 Version  : 2.38.0
-Release  : 105
+Release  : 106
 URL      : https://webkitgtk.org/releases/webkitgtk-2.38.0.tar.xz
 Source0  : https://webkitgtk.org/releases/webkitgtk-2.38.0.tar.xz
 Source1  : https://webkitgtk.org/releases/webkitgtk-2.38.0.tar.xz.asc
 Summary  : GoogleTest (with main() function)
 Group    : Development/Tools
 License  : Apache-2.0 BSD-2-Clause BSD-3-Clause GPL-2.0 GPL-3.0 LGPL-2.0 LGPL-2.1 MIT NCSA OFL-1.1 Unicode-DFS-2016
-Requires: webkitgtk-bin = %{version}-%{release}
 Requires: webkitgtk-data = %{version}-%{release}
-Requires: webkitgtk-filemap = %{version}-%{release}
 Requires: webkitgtk-lib = %{version}-%{release}
 Requires: webkitgtk-libexec = %{version}-%{release}
 Requires: webkitgtk-license = %{version}-%{release}
@@ -105,6 +103,7 @@ BuildRequires : python3-dev
 BuildRequires : ruby
 BuildRequires : xdg-dbus-proxy
 BuildRequires : zlib-dev
+Patch1: newruby.patch
 
 %description
 This module is a simple module that parses the proposed MIME spec listed
@@ -112,18 +111,6 @@ at http://freedesktop.org/.  It is currently targeted at version 0.12.
 There are no formal releases planned for this module, and it is not
 intended to be installed at this time.  Rather, it is meant to be used
 by other libraries or applications to add support for the MIME system.
-
-%package bin
-Summary: bin components for the webkitgtk package.
-Group: Binaries
-Requires: webkitgtk-data = %{version}-%{release}
-Requires: webkitgtk-libexec = %{version}-%{release}
-Requires: webkitgtk-license = %{version}-%{release}
-Requires: webkitgtk-filemap = %{version}-%{release}
-
-%description bin
-bin components for the webkitgtk package.
-
 
 %package data
 Summary: data components for the webkitgtk package.
@@ -137,7 +124,6 @@ data components for the webkitgtk package.
 Summary: dev components for the webkitgtk package.
 Group: Development
 Requires: webkitgtk-lib = %{version}-%{release}
-Requires: webkitgtk-bin = %{version}-%{release}
 Requires: webkitgtk-data = %{version}-%{release}
 Provides: webkitgtk-devel = %{version}-%{release}
 Requires: webkitgtk = %{version}-%{release}
@@ -154,21 +140,12 @@ Group: Documentation
 doc components for the webkitgtk package.
 
 
-%package filemap
-Summary: filemap components for the webkitgtk package.
-Group: Default
-
-%description filemap
-filemap components for the webkitgtk package.
-
-
 %package lib
 Summary: lib components for the webkitgtk package.
 Group: Libraries
 Requires: webkitgtk-data = %{version}-%{release}
 Requires: webkitgtk-libexec = %{version}-%{release}
 Requires: webkitgtk-license = %{version}-%{release}
-Requires: webkitgtk-filemap = %{version}-%{release}
 
 %description lib
 lib components for the webkitgtk package.
@@ -178,7 +155,6 @@ lib components for the webkitgtk package.
 Summary: libexec components for the webkitgtk package.
 Group: Default
 Requires: webkitgtk-license = %{version}-%{release}
-Requires: webkitgtk-filemap = %{version}-%{release}
 
 %description libexec
 libexec components for the webkitgtk package.
@@ -203,13 +179,14 @@ locales components for the webkitgtk package.
 %prep
 %setup -q -n webkitgtk-2.38.0
 cd %{_builddir}/webkitgtk-2.38.0
+%patch1 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1663369053
+export SOURCE_DATE_EPOCH=1664132896
 unset LD_AS_NEEDED
 mkdir -p clr-build
 pushd clr-build
@@ -234,36 +211,9 @@ export CXXFLAGS="$CXXFLAGS -Ofast -falign-functions=32 -fno-lto -fno-semantic-in
 -DENABLE_BUBBLEWRAP_SANDBOX=off
 make  %{?_smp_mflags}
 popd
-mkdir -p clr-build-avx2
-pushd clr-build-avx2
-export GCC_IGNORE_WERROR=1
-export CFLAGS="$CFLAGS -O3 -Ofast -Wl,-z,x86-64-v3 -falign-functions=32 -fno-lto -fno-semantic-interposition -march=x86-64-v3 -mprefer-vector-width=256 -msse2avx -mtune=skylake "
-export FCFLAGS="$FFLAGS -O3 -Ofast -Wl,-z,x86-64-v3 -falign-functions=32 -fno-lto -fno-semantic-interposition -march=x86-64-v3 -mprefer-vector-width=256 -msse2avx -mtune=skylake "
-export FFLAGS="$FFLAGS -O3 -Ofast -Wl,-z,x86-64-v3 -falign-functions=32 -fno-lto -fno-semantic-interposition -march=x86-64-v3 -mprefer-vector-width=256 -msse2avx -mtune=skylake "
-export CXXFLAGS="$CXXFLAGS -O3 -Ofast -Wl,-z,x86-64-v3 -falign-functions=32 -fno-lto -fno-semantic-interposition -march=x86-64-v3 -mprefer-vector-width=256 -msse2avx -mtune=skylake -std=gnu++98"
-export CFLAGS="$CFLAGS -march=x86-64-v3 -m64 -Wl,-z,x86-64-v3"
-export CXXFLAGS="$CXXFLAGS -march=x86-64-v3 -m64 -Wl,-z,x86-64-v3"
-export FFLAGS="$FFLAGS -march=x86-64-v3 -m64 -Wl,-z,x86-64-v3"
-export FCFLAGS="$FCFLAGS -march=x86-64-v3 -m64 -Wl,-z,x86-64-v3"
-%cmake .. -DPORT=GTK \
--DENABLE_GEOLOCATION=off \
--DENABLE_SPELLCHECK=off \
--DUSE_LIBHYPHEN=off \
--DUSE_LD_GOLD=off \
--DUSE_SYSTEM_MALLOC=on \
--DENABLE_MINIBROWSER=ON \
--DCMAKE_BUILD_TYPE=Release \
--DUSE_GSTREAMER_GL=OFF \
--DPYTHON=/usr/bin/python2 \
--DUSE_OPENJPEG=off \
--DUSE_WPE_RENDERER=off \
--DENABLE_GAMEPAD=off \
--DENABLE_BUBBLEWRAP_SANDBOX=off
-make  %{?_smp_mflags}
-popd
 
 %install
-export SOURCE_DATE_EPOCH=1663369053
+export SOURCE_DATE_EPOCH=1664132896
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/webkitgtk
 cp %{_builddir}/webkitgtk-%{version}/Source/JavaScriptCore/COPYING.LIB %{buildroot}/usr/share/package-licenses/webkitgtk/130f5281a2ef2a49822787e013323bde2ff119dd || :
@@ -304,22 +254,16 @@ cp %{_builddir}/webkitgtk-%{version}/Source/WebInspectorUI/UserInterface/Externa
 cp %{_builddir}/webkitgtk-%{version}/Source/WebInspectorUI/UserInterface/External/CodeMirror/LICENSE %{buildroot}/usr/share/package-licenses/webkitgtk/e7ada8ae78ebdb41cc7c8e9dbad43c5870412bd7 || :
 cp %{_builddir}/webkitgtk-%{version}/Source/WebInspectorUI/UserInterface/External/Esprima/LICENSE %{buildroot}/usr/share/package-licenses/webkitgtk/26dd70b52c7c7111ca8913fc0bc240dc28ca15c0 || :
 cp %{_builddir}/webkitgtk-%{version}/Source/WebInspectorUI/UserInterface/External/three.js/LICENSE %{buildroot}/usr/share/package-licenses/webkitgtk/eb5e50200f181f35271557d301ffd7784df64f79 || :
-pushd clr-build-avx2
-%make_install_v3  || :
-popd
 pushd clr-build
 %make_install
 popd
 %find_lang WebKit2GTK-4.1
-/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot} %{buildroot}/usr/share/clear/filemap/filemap-%{name}
+## install_append content
+rm -f %{buildroot}/usr/bin/WebKitWebDriver
+## install_append end
 
 %files
 %defattr(-,root,root,-)
-
-%files bin
-%defattr(-,root,root,-)
-/usr/bin/WebKitWebDriver
-/usr/share/clear/optimized-elf/bin*
 
 %files data
 %defattr(-,root,root,-)
@@ -546,8 +490,6 @@ popd
 /usr/include/webkitgtk-4.1/webkitdom/webkitdom.h
 /usr/include/webkitgtk-4.1/webkitdom/webkitdomautocleanups.h
 /usr/include/webkitgtk-4.1/webkitdom/webkitdomdefines.h
-/usr/lib64/glibc-hwcaps/x86-64-v3/libjavascriptcoregtk-4.1.so
-/usr/lib64/glibc-hwcaps/x86-64-v3/libwebkit2gtk-4.1.so
 /usr/lib64/libjavascriptcoregtk-4.1.so
 /usr/lib64/libwebkit2gtk-4.1.so
 /usr/lib64/pkgconfig/javascriptcoregtk-4.1.pc
@@ -4338,22 +4280,13 @@ popd
 /usr/share/gtk-doc/html/webkit2gtk-web-extension-4.1/vfunc.DOMXPathNSResolver.lookup_namespace_uri.html
 /usr/share/gtk-doc/html/webkit2gtk-web-extension-4.1/webkit2gtk-web-extension-4.1.devhelp2
 
-%files filemap
-%defattr(-,root,root,-)
-/usr/share/clear/filemap/filemap-webkitgtk
-
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/glibc-hwcaps/x86-64-v3/libjavascriptcoregtk-4.1.so.0
-/usr/lib64/glibc-hwcaps/x86-64-v3/libjavascriptcoregtk-4.1.so.0.2.3
-/usr/lib64/glibc-hwcaps/x86-64-v3/libwebkit2gtk-4.1.so.0
-/usr/lib64/glibc-hwcaps/x86-64-v3/libwebkit2gtk-4.1.so.0.2.3
 /usr/lib64/libjavascriptcoregtk-4.1.so.0
 /usr/lib64/libjavascriptcoregtk-4.1.so.0.2.3
 /usr/lib64/libwebkit2gtk-4.1.so.0
 /usr/lib64/libwebkit2gtk-4.1.so.0.2.3
 /usr/lib64/webkit2gtk-4.1/injected-bundle/libwebkit2gtkinjectedbundle.so
-/usr/share/clear/optimized-elf/other*
 
 %files libexec
 %defattr(-,root,root,-)
@@ -4361,7 +4294,6 @@ popd
 /usr/libexec/webkit2gtk-4.1/WebKitNetworkProcess
 /usr/libexec/webkit2gtk-4.1/WebKitWebProcess
 /usr/libexec/webkit2gtk-4.1/jsc
-/usr/share/clear/optimized-elf/exec*
 
 %files license
 %defattr(0644,root,root,0755)
