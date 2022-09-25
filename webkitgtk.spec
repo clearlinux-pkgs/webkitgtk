@@ -6,7 +6,7 @@
 #
 Name     : webkitgtk
 Version  : 2.38.0
-Release  : 106
+Release  : 107
 URL      : https://webkitgtk.org/releases/webkitgtk-2.38.0.tar.xz
 Source0  : https://webkitgtk.org/releases/webkitgtk-2.38.0.tar.xz
 Source1  : https://webkitgtk.org/releases/webkitgtk-2.38.0.tar.xz.asc
