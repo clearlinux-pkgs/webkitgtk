@@ -1,2 +1,3 @@
-2.40.0
+2.40.1
 gi-docgen
+pypi(builtins_generate_separate_header)

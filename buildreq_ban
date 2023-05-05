@@ -2,3 +2,4 @@
 # undesirable. One entry per line, no whitespace.
 builtins_generate_combined_implementation-python
 python-dev
+pypi(builtins_generate_separate_header)
