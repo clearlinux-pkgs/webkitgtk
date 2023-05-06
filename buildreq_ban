@@ -3,3 +3,4 @@
 builtins_generate_combined_implementation-python
 python-dev
 pypi(builtins_generate_separate_header)
+pypi(builtins_generate_wrapper_implementation)
