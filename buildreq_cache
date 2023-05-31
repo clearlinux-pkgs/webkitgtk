@@ -1,4 +1,2 @@
-2.40.1
+2.40.2
 gi-docgen
-pypi(builtins_generate_separate_header)
-pypi(builtins_generate_wrapper_implementation)
