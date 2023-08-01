@@ -6,11 +6,11 @@
 # Source0 file verified with key 0xF3D322D0EC4582C3 (cgarcia@igalia.com)
 #
 Name     : webkitgtk
-Version  : 2.40.4
-Release  : 121
-URL      : https://webkitgtk.org/releases/webkitgtk-2.40.4.tar.xz
-Source0  : https://webkitgtk.org/releases/webkitgtk-2.40.4.tar.xz
-Source1  : https://webkitgtk.org/releases/webkitgtk-2.40.4.tar.xz.asc
+Version  : 2.40.5
+Release  : 122
+URL      : https://webkitgtk.org/releases/webkitgtk-2.40.5.tar.xz
+Source0  : https://webkitgtk.org/releases/webkitgtk-2.40.5.tar.xz
+Source1  : https://webkitgtk.org/releases/webkitgtk-2.40.5.tar.xz.asc
 Summary  : Web content engine for GTK
 Group    : Development/Tools
 License  : Apache-2.0 BSD-2-Clause BSD-3-Clause GPL-2.0 GPL-3.0 LGPL-2.0 LGPL-2.1 MIT NCSA OFL-1.1 Unicode-DFS-2016
@@ -187,15 +187,15 @@ locales components for the webkitgtk package.
 
 
 %prep
-%setup -q -n webkitgtk-2.40.4
-cd %{_builddir}/webkitgtk-2.40.4
+%setup -q -n webkitgtk-2.40.5
+cd %{_builddir}/webkitgtk-2.40.5
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1689958051
+export SOURCE_DATE_EPOCH=1690907975
 unset LD_AS_NEEDED
 mkdir -p clr-build
 pushd clr-build
@@ -223,7 +223,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1689958051
+export SOURCE_DATE_EPOCH=1690907975
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/webkitgtk
 cp %{_builddir}/webkitgtk-%{version}/Source/JavaScriptCore/COPYING.LIB %{buildroot}/usr/share/package-licenses/webkitgtk/130f5281a2ef2a49822787e013323bde2ff119dd || :
@@ -4335,9 +4335,9 @@ rm -f %{buildroot}/usr/bin/WebKitWebDriver
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libjavascriptcoregtk-4.1.so.0
-/usr/lib64/libjavascriptcoregtk-4.1.so.0.3.13
+/usr/lib64/libjavascriptcoregtk-4.1.so.0.3.14
 /usr/lib64/libwebkit2gtk-4.1.so.0
-/usr/lib64/libwebkit2gtk-4.1.so.0.8.4
+/usr/lib64/libwebkit2gtk-4.1.so.0.8.5
 /usr/lib64/webkit2gtk-4.1/injected-bundle/libwebkit2gtkinjectedbundle.so
 
 %files libexec
