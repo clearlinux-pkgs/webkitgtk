@@ -33,3 +33,4 @@ compat-libsoup-soname-24-dev
 unifdef
 libwpe-dev
 WPEBackend-fdo-dev
+gtk4-dev

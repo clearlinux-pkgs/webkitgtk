@@ -26,3 +26,6 @@ libgav1
 libyuv
 rav1e
 libelogind
+libusev
+libjxl
+brotlidec
