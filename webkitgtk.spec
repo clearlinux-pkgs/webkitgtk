@@ -9,7 +9,7 @@
 #
 Name     : webkitgtk
 Version  : 2.46.1
-Release  : 127
+Release  : 128
 URL      : https://webkitgtk.org/releases/webkitgtk-2.46.1.tar.xz
 Source0  : https://webkitgtk.org/releases/webkitgtk-2.46.1.tar.xz
 Source1  : https://webkitgtk.org/releases/webkitgtk-2.46.1.tar.xz.asc
